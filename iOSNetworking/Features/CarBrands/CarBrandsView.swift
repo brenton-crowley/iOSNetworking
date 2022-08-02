@@ -50,7 +50,7 @@ struct CarBrandsView: View {
                         
                 }
             }
-        .animation(.default, value: isSearching)
+            .animation(.default, value: isSearching)
         }
     }
     
@@ -122,8 +122,8 @@ struct CarBrandsView: View {
 
 struct CarBrandsView_Previews: PreviewProvider {
     static var previews: some View {
-        NavigationView {
-            CarBrandsView()
-        }
+        
+        CarBrandsView()
+            .nestInNavigationView(selectedTab: Tabs.carBrands.rawValue)
     }
 }

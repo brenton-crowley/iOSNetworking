@@ -20,6 +20,7 @@
 		84AA886C2898DCD900A8E02B /* UserProfileButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AA886B2898DCD900A8E02B /* UserProfileButton.swift */; };
 		84AA886E2898DF3800A8E02B /* MyBooksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AA886D2898DF3800A8E02B /* MyBooksView.swift */; };
 		84AA88702898DF6700A8E02B /* MyImagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AA886F2898DF6700A8E02B /* MyImagesView.swift */; };
+		84AA88722898F24C00A8E02B /* UserProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AA88712898F24C00A8E02B /* UserProfileView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,7 @@
 		84AA886B2898DCD900A8E02B /* UserProfileButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileButton.swift; sourceTree = "<group>"; };
 		84AA886D2898DF3800A8E02B /* MyBooksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBooksView.swift; sourceTree = "<group>"; };
 		84AA886F2898DF6700A8E02B /* MyImagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyImagesView.swift; sourceTree = "<group>"; };
+		84AA88712898F24C00A8E02B /* UserProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +134,7 @@
 			isa = PBXGroup;
 			children = (
 				84AA886B2898DCD900A8E02B /* UserProfileButton.swift */,
+				84AA88712898F24C00A8E02B /* UserProfileView.swift */,
 			);
 			path = UserProfile;
 			sourceTree = "<group>";
@@ -283,6 +286,7 @@
 				84AA884528989AC600A8E02B /* ContentView.swift in Sources */,
 				84AA88682898BFFE00A8E02B /* CarBrandsView.swift in Sources */,
 				84AA88662898BD5400A8E02B /* StatusCodesView.swift in Sources */,
+				84AA88722898F24C00A8E02B /* UserProfileView.swift in Sources */,
 				84AA886A2898DA4300A8E02B /* TabContentView.swift in Sources */,
 				84AA884328989AC600A8E02B /* iOSNetworkingApp.swift in Sources */,
 				84AA885F2898A39600A8E02B /* Tabs.swift in Sources */,
