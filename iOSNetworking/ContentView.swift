@@ -8,9 +8,51 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @State private var selectedTab = Tabs.statusCodes.rawValue
+    
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        
+        tabView
+        
+    }
+    
+    var tabView: some View {
+        
+        NavigationView {
+            
+            let focussedTab = Tabs.init(rawValue: selectedTab)
+            
+            TabView {
+                statusCodesView
+                carBrandsView
+                myBooksView
+                myImagesView
+            }
+            .navigationTitle(focussedTab?.title ?? "")
+            .navigationBarTitleDisplayMode(.inline)
+        }
+        
+    }
+    
+    var statusCodesView: some View {
+        Text(Tabs.statusCodes.title)
+            .tabable(tab: Tabs.statusCodes, selectedTab: $selectedTab)
+    }
+    
+    var carBrandsView: some View {
+        Text(Tabs.carBrands.title)
+            .tabable(tab: Tabs.carBrands, selectedTab: $selectedTab)
+    }
+    
+    var myBooksView: some View {
+        Text(Tabs.myBooks.title)
+            .tabable(tab: Tabs.myBooks, selectedTab: $selectedTab)
+    }
+    
+    var myImagesView: some View {
+        Text(Tabs.myImages.title)
+            .tabable(tab: Tabs.myImages, selectedTab: $selectedTab)
     }
 }
 
