@@ -14,66 +14,39 @@ struct ContentView: View {
     
     var body: some View {
         
-        tabView
-        
-    }
-    
-    var tabView: some View {
-        
-        NavigationView {
-            
-            let focussedTab = Tabs.init(rawValue: selectedTab)
-            
-            TabView {
-                statusCodesView
-                carBrandsView
-                myBooksView
-                myImagesView
-            }
-            .navigationTitle(focussedTab?.title ?? "")
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    userProfileItem
-                }
-            }
-            
+        TabView(selection: $selectedTab) {
+            statusCodesView
+            carBrandsView
+            myBooksView
+            myImagesView
         }
         
     }
     
     var statusCodesView: some View {
-        Text(Tabs.statusCodes.title)
+        StatusCodesView()
+            .nestInNavigationView(selectedTab: selectedTab)
             .tabify(tab: Tabs.statusCodes, selectedTab: $selectedTab)
     }
     
     var carBrandsView: some View {
-        Text(Tabs.carBrands.title)
+        CarBrandsView()
+            .nestInNavigationView(selectedTab: selectedTab)
             .tabify(tab: Tabs.carBrands, selectedTab: $selectedTab)
     }
     
     var myBooksView: some View {
-        Text(Tabs.myBooks.title)
+        MyBooksView()
+            .nestInNavigationView(selectedTab: selectedTab)
             .tabify(tab: Tabs.myBooks, selectedTab: $selectedTab)
     }
     
     var myImagesView: some View {
-        Text(Tabs.myImages.title)
+        MyImagesView()
+            .nestInNavigationView(selectedTab: selectedTab)
             .tabify(tab: Tabs.myImages, selectedTab: $selectedTab)
     }
     
-    var userProfileItem: some View {
-        Button {
-            isUserProfilePresented = true
-        } label: {
-            Image(systemName: Tabs.userProfile.symbol)
-        }
-        .sheet(isPresented: $isUserProfilePresented) {
-            // change to user profile view
-            Color.themeBackground
-                .ignoresSafeArea()
-        }
-    }
 }
 
 struct ContentView_Previews: PreviewProvider {
