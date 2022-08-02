@@ -37,22 +37,22 @@ struct ContentView: View {
     
     var statusCodesView: some View {
         Text(Tabs.statusCodes.title)
-            .tabable(tab: Tabs.statusCodes, selectedTab: $selectedTab)
+            .tabify(tab: Tabs.statusCodes, selectedTab: $selectedTab)
     }
     
     var carBrandsView: some View {
         Text(Tabs.carBrands.title)
-            .tabable(tab: Tabs.carBrands, selectedTab: $selectedTab)
+            .tabify(tab: Tabs.carBrands, selectedTab: $selectedTab)
     }
     
     var myBooksView: some View {
         Text(Tabs.myBooks.title)
-            .tabable(tab: Tabs.myBooks, selectedTab: $selectedTab)
+            .tabify(tab: Tabs.myBooks, selectedTab: $selectedTab)
     }
     
     var myImagesView: some View {
         Text(Tabs.myImages.title)
-            .tabable(tab: Tabs.myImages, selectedTab: $selectedTab)
+            .tabify(tab: Tabs.myImages, selectedTab: $selectedTab)
     }
 }
 

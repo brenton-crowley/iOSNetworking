@@ -28,7 +28,7 @@ struct Tabify: ViewModifier {
 
 extension View {
     
-    func tabable(tab:Tabs, selectedTab: Binding<Int>) -> some View {
+    func tabify(tab:Tabs, selectedTab: Binding<Int>) -> some View {
         self.modifier(Tabify(tab: tab, selectedTab: selectedTab))
     }
     
