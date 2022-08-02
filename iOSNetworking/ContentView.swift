@@ -10,6 +10,7 @@ import SwiftUI
 struct ContentView: View {
     
     @State private var selectedTab = Tabs.statusCodes.rawValue
+    @State private var isUserProfilePresented = false
     
     var body: some View {
         
@@ -31,6 +32,12 @@ struct ContentView: View {
             }
             .navigationTitle(focussedTab?.title ?? "")
             .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    userProfileItem
+                }
+            }
+            
         }
         
     }
@@ -53,6 +60,19 @@ struct ContentView: View {
     var myImagesView: some View {
         Text(Tabs.myImages.title)
             .tabify(tab: Tabs.myImages, selectedTab: $selectedTab)
+    }
+    
+    var userProfileItem: some View {
+        Button {
+            isUserProfilePresented = true
+        } label: {
+            Image(systemName: Tabs.userProfile.symbol)
+        }
+        .sheet(isPresented: $isUserProfilePresented) {
+            // change to user profile view
+            Color.themeBackground
+                .ignoresSafeArea()
+        }
     }
 }
 

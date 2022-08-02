@@ -9,7 +9,7 @@ import Foundation
 
 enum Tabs: Int, CaseIterable {
     
-    case statusCodes, carBrands, myBooks, myImages
+    case statusCodes, carBrands, myBooks, myImages, userProfile
     
     var title: String {
         
@@ -24,6 +24,8 @@ enum Tabs: Int, CaseIterable {
             title = "My Books"
         case .myImages:
             title = "My Images"
+        case .userProfile:
+            title = "User Profile"
         }
         
         return title
@@ -42,6 +44,8 @@ enum Tabs: Int, CaseIterable {
             symbol = "book"
         case .myImages:
             symbol = "photo"
+        case .userProfile:
+            symbol = "person"
         }
         
         return symbol
