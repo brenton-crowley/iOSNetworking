@@ -12,7 +12,7 @@
 		84AA884728989AC800A8E02B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84AA884628989AC800A8E02B /* Assets.xcassets */; };
 		84AA884A28989AC800A8E02B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84AA884928989AC800A8E02B /* Preview Assets.xcassets */; };
 		84AA885F2898A39600A8E02B /* Tabs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AA885E2898A39600A8E02B /* Tabs.swift */; };
-		84AA88612898A7C500A8E02B /* Tabable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AA88602898A7C500A8E02B /* Tabable.swift */; };
+		84AA88612898A7C500A8E02B /* Tabify.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AA88602898A7C500A8E02B /* Tabify.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,7 +22,7 @@
 		84AA884628989AC800A8E02B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		84AA884928989AC800A8E02B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		84AA885E2898A39600A8E02B /* Tabs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tabs.swift; sourceTree = "<group>"; };
-		84AA88602898A7C500A8E02B /* Tabable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tabable.swift; sourceTree = "<group>"; };
+		84AA88602898A7C500A8E02B /* Tabify.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tabify.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -172,7 +172,7 @@
 			isa = PBXGroup;
 			children = (
 				84AA885E2898A39600A8E02B /* Tabs.swift */,
-				84AA88602898A7C500A8E02B /* Tabable.swift */,
+				84AA88602898A7C500A8E02B /* Tabify.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -250,7 +250,7 @@
 				84AA884528989AC600A8E02B /* ContentView.swift in Sources */,
 				84AA884328989AC600A8E02B /* iOSNetworkingApp.swift in Sources */,
 				84AA885F2898A39600A8E02B /* Tabs.swift in Sources */,
-				84AA88612898A7C500A8E02B /* Tabable.swift in Sources */,
+				84AA88612898A7C500A8E02B /* Tabify.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

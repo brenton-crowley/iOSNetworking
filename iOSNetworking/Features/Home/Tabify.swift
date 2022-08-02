@@ -1,5 +1,5 @@
 //
-//  Tabable.swift
+//  Tabify.swift
 //  iOSNetworking
 //
 //  Created by Brent on 2/8/2022.
@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-struct Tabable: ViewModifier {
+struct Tabify: ViewModifier {
     
     var tab:Tabs
     
@@ -29,7 +29,7 @@ struct Tabable: ViewModifier {
 extension View {
     
     func tabable(tab:Tabs, selectedTab: Binding<Int>) -> some View {
-        self.modifier(Tabable(tab: tab, selectedTab: selectedTab))
+        self.modifier(Tabify(tab: tab, selectedTab: selectedTab))
     }
     
 }
