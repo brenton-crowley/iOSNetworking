@@ -33,28 +33,16 @@ struct UserProfileView: View {
         
         VStack(alignment: .center) {
             
-            header
             placeholderImage
-                .padding(.bottom)
+                .padding(.vertical)
             profileDetails
         }
-        
-    }
-    
-    var header: some View {
-        
-        ZStack (alignment: .center)  {
-            Text("User Profile") // TODO: Make dynamic based
-                .font(.system(.title2).weight(.medium))
-                .multilineTextAlignment(.center)
-            HStack {
-                Spacer()
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
                 dismissButton
-                    .frame(height: Constants.dismissButtonHeight)
             }
         }
-        .padding()
-        
+        .navigationTitle("User Profile") // TODO Change
         
     }
     
@@ -116,5 +104,6 @@ struct UserProfileView: View {
 struct UserProfileView_Previews: PreviewProvider {
     static var previews: some View {
         UserProfileView(isPresented: Binding.constant(true))
+            .nestInNavigationView(selectedTab: Tabs.userProfile.rawValue)
     }
 }
