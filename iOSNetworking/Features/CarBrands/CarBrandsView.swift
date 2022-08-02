@@ -39,7 +39,6 @@ struct CarBrandsView: View {
                 searchBar
                     .offset(y: isSearching ? 0 : -Constants.contentOffset)
                     .opacity(isSearching ? Constants.showOpacity : 0)
-                    .border(.red)
             }
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {

@@ -20,8 +20,6 @@ struct UserProfileButton: View {
         .sheet(isPresented: $isPresented) {
             // Present UserProfileView once created.
             UserProfileView(isPresented: $isPresented)
-                .ignoresSafeArea()
-//                .nestInNavigationView(selectedTab: Tabs.userProfile.rawValue)
         }
     }
 }

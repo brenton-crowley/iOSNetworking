@@ -31,13 +31,13 @@ struct UserProfileView: View {
     
     var body: some View {
         
-            VStack(alignment: .center) {
-
-                    header
-                    placeholderImage
-                        .padding(.bottom)
-                    profileDetails
-                }
+        VStack(alignment: .center) {
+            
+            header
+            placeholderImage
+                .padding(.bottom)
+            profileDetails
+        }
         
     }
     
@@ -88,15 +88,15 @@ struct UserProfileView: View {
     var placeholderImage: some View {
         
         Image(Constants.profileImagePlaceholderImageName)
-                .resizable()
-                .scaledToFit()
-                .clipShape(Circle())
-                .overlay(
-                    Circle()
-                        .stroke(Color.secondary, lineWidth: Constants.profileImageBorderWidth)
-                        .padding(Constants.profileImageBorderPadding)
-                        .opacity(Constants.profileImageBorderOpacity)
-                )
+            .resizable()
+            .scaledToFit()
+            .clipShape(Circle())
+            .overlay(
+                Circle()
+                    .stroke(Color.secondary, lineWidth: Constants.profileImageBorderWidth)
+                    .padding(Constants.profileImageBorderPadding)
+                    .opacity(Constants.profileImageBorderOpacity)
+            )
     }
     
     var dismissButton: some View {
