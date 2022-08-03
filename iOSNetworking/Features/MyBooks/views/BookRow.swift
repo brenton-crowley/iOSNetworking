@@ -15,9 +15,14 @@ struct BookRow: View {
         // placerholderCover
         static let placeholderCornerRadius:CGFloat = 5.0
         static let bookCoverWidth:CGFloat = 80.0
+        
+        // Details
+        static let detailItemSpacing:CGFloat = 10.0
     }
     
     // MARK: - View
+    
+    let book: Book
     
     var placeholderColors:[Color] {
         let colors:[Color] = [
@@ -38,15 +43,13 @@ struct BookRow: View {
             bookDetails
         }
         .frame(height: Constants.rowHeight)
-        .padding()
-        .border(.blue)
     }
     
-    // MARK: Book Details
+    // MARK: - Book Details
     
     var bookDetails: some View {
         
-        VStack (alignment: .leading) {
+        VStack (alignment: .leading, spacing: Constants.detailItemSpacing) {
             
             // Title
             bookField("Title: ",
@@ -56,7 +59,7 @@ struct BookRow: View {
             bookField("Author: ",
                       systemIconImage: "person",
                       value: "Andy Weir")
-            Spacer()
+            
             
 
             // ISBN
@@ -77,7 +80,7 @@ struct BookRow: View {
         }
     }
     
-    // MARK: Book Cover
+    // MARK: - Book Cover
     
     var bookCover: some View {
         
@@ -102,7 +105,7 @@ struct BookRow: View {
                 .fill(coverColor)
                 .frame(width: Constants.bookCoverWidth)
             
-            Text("A.B")
+            Text(getInitialsForName(book.author) ?? "Au")
                 .font(.system(.largeTitle, design: .rounded))
                 .fontWeight(.bold)
                 .blendMode(.multiply)
@@ -110,10 +113,20 @@ struct BookRow: View {
         }
     }
     
+    private func getInitialsForName(_ name: String) -> String? {
+        
+        let formatter = PersonNameComponentsFormatter()
+        if let components = formatter.personNameComponents(from: name) {
+             formatter.style = .abbreviated
+             return formatter.string(from: components)
+        }
+        return nil
+    }
+    
 }
 
 struct BookRow_Previews: PreviewProvider {
     static var previews: some View {
-        BookRow()
+        BookRow(book: Book.exampleAllDetails!)
     }
 }

@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		84492B482899F23C0000129D /* StatusCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84492B472899F23C0000129D /* StatusCode.swift */; };
 		84492B4B289A10A20000129D /* BookRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84492B4A289A10A20000129D /* BookRow.swift */; };
+		84492B4D289A19750000129D /* BookDataEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84492B4C289A19750000129D /* BookDataEntryView.swift */; };
+		84492B50289A1A300000129D /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84492B4F289A1A300000129D /* Book.swift */; };
 		84AA884328989AC600A8E02B /* iOSNetworkingApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AA884228989AC600A8E02B /* iOSNetworkingApp.swift */; };
 		84AA884528989AC600A8E02B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AA884428989AC600A8E02B /* ContentView.swift */; };
 		84AA884728989AC800A8E02B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84AA884628989AC800A8E02B /* Assets.xcassets */; };
@@ -22,11 +24,14 @@
 		84AA886E2898DF3800A8E02B /* MyBooksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AA886D2898DF3800A8E02B /* MyBooksView.swift */; };
 		84AA88702898DF6700A8E02B /* MyImagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AA886F2898DF6700A8E02B /* MyImagesView.swift */; };
 		84AA88722898F24C00A8E02B /* UserProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AA88712898F24C00A8E02B /* UserProfileView.swift */; };
+		84F3AE41289A4CB3004D1359 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F3AE40289A4CB3004D1359 /* Photo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		84492B472899F23C0000129D /* StatusCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusCode.swift; sourceTree = "<group>"; };
 		84492B4A289A10A20000129D /* BookRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookRow.swift; sourceTree = "<group>"; };
+		84492B4C289A19750000129D /* BookDataEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDataEntryView.swift; sourceTree = "<group>"; };
+		84492B4F289A1A300000129D /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
 		84AA883F28989AC600A8E02B /* iOSNetworking.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSNetworking.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84AA884228989AC600A8E02B /* iOSNetworkingApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSNetworkingApp.swift; sourceTree = "<group>"; };
 		84AA884428989AC600A8E02B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -41,6 +46,7 @@
 		84AA886D2898DF3800A8E02B /* MyBooksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBooksView.swift; sourceTree = "<group>"; };
 		84AA886F2898DF6700A8E02B /* MyImagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyImagesView.swift; sourceTree = "<group>"; };
 		84AA88712898F24C00A8E02B /* UserProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileView.swift; sourceTree = "<group>"; };
+		84F3AE40289A4CB3004D1359 /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,8 +81,17 @@
 			children = (
 				84AA886D2898DF3800A8E02B /* MyBooksView.swift */,
 				84492B4A289A10A20000129D /* BookRow.swift */,
+				84492B4C289A19750000129D /* BookDataEntryView.swift */,
 			);
 			path = views;
+			sourceTree = "<group>";
+		};
+		84492B4E289A1A280000129D /* model */ = {
+			isa = PBXGroup;
+			children = (
+				84492B4F289A1A300000129D /* Book.swift */,
+			);
+			path = model;
 			sourceTree = "<group>";
 		};
 		84AA883628989AC600A8E02B = {
@@ -137,6 +152,7 @@
 		84AA885228989B3700A8E02B /* MyBooks */ = {
 			isa = PBXGroup;
 			children = (
+				84492B4E289A1A280000129D /* model */,
 				84492B49289A10950000129D /* views */,
 			);
 			path = MyBooks;
@@ -145,6 +161,8 @@
 		84AA885328989B3D00A8E02B /* MyImages */ = {
 			isa = PBXGroup;
 			children = (
+				84F3AE3F289A4C6E004D1359 /* model */,
+				84F3AE3E289A4C6B004D1359 /* views */,
 				84AA886F2898DF6700A8E02B /* MyImagesView.swift */,
 			);
 			path = MyImages;
@@ -236,6 +254,21 @@
 			path = utils;
 			sourceTree = "<group>";
 		};
+		84F3AE3E289A4C6B004D1359 /* views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = views;
+			sourceTree = "<group>";
+		};
+		84F3AE3F289A4C6E004D1359 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				84F3AE40289A4CB3004D1359 /* Photo.swift */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -306,6 +339,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84F3AE41289A4CB3004D1359 /* Photo.swift in Sources */,
 				84AA88642898B4E600A8E02B /* Color+Extensions.swift in Sources */,
 				84AA88702898DF6700A8E02B /* MyImagesView.swift in Sources */,
 				84492B482899F23C0000129D /* StatusCode.swift in Sources */,
@@ -314,10 +348,12 @@
 				84AA884528989AC600A8E02B /* ContentView.swift in Sources */,
 				84AA88682898BFFE00A8E02B /* CarBrandsView.swift in Sources */,
 				84AA88662898BD5400A8E02B /* StatusCodesView.swift in Sources */,
+				84492B50289A1A300000129D /* Book.swift in Sources */,
 				84AA88722898F24C00A8E02B /* UserProfileView.swift in Sources */,
 				84AA884328989AC600A8E02B /* iOSNetworkingApp.swift in Sources */,
 				84AA885F2898A39600A8E02B /* Tabs.swift in Sources */,
 				84492B4B289A10A20000129D /* BookRow.swift in Sources */,
+				84492B4D289A19750000129D /* BookDataEntryView.swift in Sources */,
 				84AA88612898A7C500A8E02B /* Tabify.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

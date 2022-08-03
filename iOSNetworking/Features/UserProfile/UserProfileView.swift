@@ -89,15 +89,9 @@ struct UserProfileView: View {
     
     var dismissButton: some View {
         
-        Button {
+        Button("Cancel") {
             isPresented = false
-        } label: {
-            Image(systemName: Constants.dismissSystemImage)
-                .resizable()
-                .scaledToFit()
         }
-        
-        
     }
 }
 
