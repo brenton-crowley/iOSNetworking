@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		84492B482899F23C0000129D /* StatusCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84492B472899F23C0000129D /* StatusCode.swift */; };
+		84492B4B289A10A20000129D /* BookRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84492B4A289A10A20000129D /* BookRow.swift */; };
 		84AA884328989AC600A8E02B /* iOSNetworkingApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AA884228989AC600A8E02B /* iOSNetworkingApp.swift */; };
 		84AA884528989AC600A8E02B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AA884428989AC600A8E02B /* ContentView.swift */; };
 		84AA884728989AC800A8E02B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84AA884628989AC800A8E02B /* Assets.xcassets */; };
@@ -25,6 +26,7 @@
 
 /* Begin PBXFileReference section */
 		84492B472899F23C0000129D /* StatusCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusCode.swift; sourceTree = "<group>"; };
+		84492B4A289A10A20000129D /* BookRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookRow.swift; sourceTree = "<group>"; };
 		84AA883F28989AC600A8E02B /* iOSNetworking.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSNetworking.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84AA884228989AC600A8E02B /* iOSNetworkingApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSNetworkingApp.swift; sourceTree = "<group>"; };
 		84AA884428989AC600A8E02B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -66,6 +68,15 @@
 				84492B472899F23C0000129D /* StatusCode.swift */,
 			);
 			path = model;
+			sourceTree = "<group>";
+		};
+		84492B49289A10950000129D /* views */ = {
+			isa = PBXGroup;
+			children = (
+				84AA886D2898DF3800A8E02B /* MyBooksView.swift */,
+				84492B4A289A10A20000129D /* BookRow.swift */,
+			);
+			path = views;
 			sourceTree = "<group>";
 		};
 		84AA883628989AC600A8E02B = {
@@ -126,7 +137,7 @@
 		84AA885228989B3700A8E02B /* MyBooks */ = {
 			isa = PBXGroup;
 			children = (
-				84AA886D2898DF3800A8E02B /* MyBooksView.swift */,
+				84492B49289A10950000129D /* views */,
 			);
 			path = MyBooks;
 			sourceTree = "<group>";
@@ -306,6 +317,7 @@
 				84AA88722898F24C00A8E02B /* UserProfileView.swift in Sources */,
 				84AA884328989AC600A8E02B /* iOSNetworkingApp.swift in Sources */,
 				84AA885F2898A39600A8E02B /* Tabs.swift in Sources */,
+				84492B4B289A10A20000129D /* BookRow.swift in Sources */,
 				84AA88612898A7C500A8E02B /* Tabify.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
