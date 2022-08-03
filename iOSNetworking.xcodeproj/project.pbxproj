@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		84492B482899F23C0000129D /* StatusCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84492B472899F23C0000129D /* StatusCode.swift */; };
 		84AA884328989AC600A8E02B /* iOSNetworkingApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AA884228989AC600A8E02B /* iOSNetworkingApp.swift */; };
 		84AA884528989AC600A8E02B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AA884428989AC600A8E02B /* ContentView.swift */; };
 		84AA884728989AC800A8E02B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84AA884628989AC800A8E02B /* Assets.xcassets */; };
@@ -16,7 +17,6 @@
 		84AA88642898B4E600A8E02B /* Color+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AA88632898B4E600A8E02B /* Color+Extensions.swift */; };
 		84AA88662898BD5400A8E02B /* StatusCodesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AA88652898BD5400A8E02B /* StatusCodesView.swift */; };
 		84AA88682898BFFE00A8E02B /* CarBrandsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AA88672898BFFE00A8E02B /* CarBrandsView.swift */; };
-		84AA886A2898DA4300A8E02B /* TabContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AA88692898DA4300A8E02B /* TabContentView.swift */; };
 		84AA886C2898DCD900A8E02B /* UserProfileButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AA886B2898DCD900A8E02B /* UserProfileButton.swift */; };
 		84AA886E2898DF3800A8E02B /* MyBooksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AA886D2898DF3800A8E02B /* MyBooksView.swift */; };
 		84AA88702898DF6700A8E02B /* MyImagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AA886F2898DF6700A8E02B /* MyImagesView.swift */; };
@@ -24,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		84492B472899F23C0000129D /* StatusCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusCode.swift; sourceTree = "<group>"; };
 		84AA883F28989AC600A8E02B /* iOSNetworking.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSNetworking.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84AA884228989AC600A8E02B /* iOSNetworkingApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSNetworkingApp.swift; sourceTree = "<group>"; };
 		84AA884428989AC600A8E02B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -34,7 +35,6 @@
 		84AA88632898B4E600A8E02B /* Color+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extensions.swift"; sourceTree = "<group>"; };
 		84AA88652898BD5400A8E02B /* StatusCodesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusCodesView.swift; sourceTree = "<group>"; };
 		84AA88672898BFFE00A8E02B /* CarBrandsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarBrandsView.swift; sourceTree = "<group>"; };
-		84AA88692898DA4300A8E02B /* TabContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabContentView.swift; sourceTree = "<group>"; };
 		84AA886B2898DCD900A8E02B /* UserProfileButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileButton.swift; sourceTree = "<group>"; };
 		84AA886D2898DF3800A8E02B /* MyBooksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBooksView.swift; sourceTree = "<group>"; };
 		84AA886F2898DF6700A8E02B /* MyImagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyImagesView.swift; sourceTree = "<group>"; };
@@ -52,6 +52,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		84492B452899F1BD0000129D /* views */ = {
+			isa = PBXGroup;
+			children = (
+				84AA88652898BD5400A8E02B /* StatusCodesView.swift */,
+			);
+			path = views;
+			sourceTree = "<group>";
+		};
+		84492B462899F1C70000129D /* model */ = {
+			isa = PBXGroup;
+			children = (
+				84492B472899F23C0000129D /* StatusCode.swift */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
 		84AA883628989AC600A8E02B = {
 			isa = PBXGroup;
 			children = (
@@ -101,7 +117,8 @@
 		84AA885128989B2600A8E02B /* StatusCodes */ = {
 			isa = PBXGroup;
 			children = (
-				84AA88652898BD5400A8E02B /* StatusCodesView.swift */,
+				84492B462899F1C70000129D /* model */,
+				84492B452899F1BD0000129D /* views */,
 			);
 			path = StatusCodes;
 			sourceTree = "<group>";
@@ -196,7 +213,6 @@
 			children = (
 				84AA885E2898A39600A8E02B /* Tabs.swift */,
 				84AA88602898A7C500A8E02B /* Tabify.swift */,
-				84AA88692898DA4300A8E02B /* TabContentView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -281,13 +297,13 @@
 			files = (
 				84AA88642898B4E600A8E02B /* Color+Extensions.swift in Sources */,
 				84AA88702898DF6700A8E02B /* MyImagesView.swift in Sources */,
+				84492B482899F23C0000129D /* StatusCode.swift in Sources */,
 				84AA886E2898DF3800A8E02B /* MyBooksView.swift in Sources */,
 				84AA886C2898DCD900A8E02B /* UserProfileButton.swift in Sources */,
 				84AA884528989AC600A8E02B /* ContentView.swift in Sources */,
 				84AA88682898BFFE00A8E02B /* CarBrandsView.swift in Sources */,
 				84AA88662898BD5400A8E02B /* StatusCodesView.swift in Sources */,
 				84AA88722898F24C00A8E02B /* UserProfileView.swift in Sources */,
-				84AA886A2898DA4300A8E02B /* TabContentView.swift in Sources */,
 				84AA884328989AC600A8E02B /* iOSNetworkingApp.swift in Sources */,
 				84AA885F2898A39600A8E02B /* Tabs.swift in Sources */,
 				84AA88612898A7C500A8E02B /* Tabify.swift in Sources */,
