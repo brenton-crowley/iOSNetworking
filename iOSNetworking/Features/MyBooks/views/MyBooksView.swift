@@ -9,6 +9,20 @@ import SwiftUI
 
 struct MyBooksView: View {
     
+    private struct Constants {
+        
+        // Empty libary
+        static let libraryEmptyMessage = "You don't have any books in your library. Click the plus button + in the top right corner add a book."
+        static let libraryEmptySystemIcon = "books.vertical.fill"
+        static let libraryEmptyLabelText = "Oops!"
+        static let libaryEmptyHorizontalPadding:CGFloat = 20.0
+        static let libaryEmptyVerticalPadding:CGFloat = 5.0
+        
+        
+        // System Icon
+        static let addBookSystemIcon = "plus"
+    }
+    
     @State private var isAddBookPresented = false
     @State private var isUpdateBookPresented = false
     
@@ -34,12 +48,13 @@ struct MyBooksView: View {
     
     var noBooksFeedback: some View {
         VStack (alignment: .center) {
-            Label("Oops!", systemImage: "books.vertical.fill")
+            Label(Constants.libraryEmptyLabelText,
+                  systemImage: Constants.libraryEmptySystemIcon)
                 .font(.largeTitle)
                 .foregroundColor(.themeAccentLighter)
-            Text("You don't have any **books** in your library. Click the **plus button +** in the top right corner add a book.")
-                .padding(.horizontal, 20.0)
-                .padding(.top, 5.0)
+            Text(Constants.libraryEmptyMessage)
+                .padding(.horizontal, Constants.libaryEmptyHorizontalPadding)
+                .padding(.top, Constants.libaryEmptyVerticalPadding)
                 .multilineTextAlignment(.center)
         }
     }
@@ -56,7 +71,6 @@ struct MyBooksView: View {
                 }.sheet(isPresented: $isUpdateBookPresented) {
                     BookDataEntryView(
                         book: book,
-                        viewTitle: "Update Book",
                         isPresented: $isUpdateBookPresented)
                 }
             }
@@ -70,10 +84,10 @@ struct MyBooksView: View {
         Button {
             isAddBookPresented = true
         } label: {
-            Image(systemName: "plus")
+            Image(systemName: Constants.addBookSystemIcon)
         }
         .sheet(isPresented: $isAddBookPresented) {
-            BookDataEntryView(viewTitle: "Add Book", isPresented: $isAddBookPresented)
+            BookDataEntryView(isPresented: $isAddBookPresented)
         }
     }
 }

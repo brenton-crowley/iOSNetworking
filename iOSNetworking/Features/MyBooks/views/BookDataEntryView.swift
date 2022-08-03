@@ -11,6 +11,10 @@ struct BookDataEntryView: View {
     
     private struct Constants {
         
+        // View title
+        static let addBookTitle = "Add Book"
+        static let updateBookTitle = "Update Book"
+        
         // Dismiss button
         static let dismissSystemImage = "x.circle.fill"
         static let dismissButtonHeight:CGFloat = 25.0
@@ -20,10 +24,14 @@ struct BookDataEntryView: View {
         static let doubleLineTextfieldHeight:CGFloat = 60.0
         static let singleLineTextfieldHeight:CGFloat = 30.0
         
+        // Decided to not create constants for each of the fields as it would just lead to unnecessary bloat. Scroll down to edit those values.
+        
     }
     
     var book: Book?
-    var viewTitle:String = "Book Entry"
+    var viewTitle:String {
+        return book == nil ? Constants.addBookTitle : Constants.updateBookTitle
+    }
     
     @State private var titleText: String = ""
     @State private var authorText: String = ""
@@ -188,7 +196,6 @@ struct BookDataEntryView_Previews: PreviewProvider {
     static var previews: some View {
         BookDataEntryView(
             book: Book.exampleAllDetails!,
-            viewTitle: "Update Book",
             isPresented: Binding.constant(true))
     }
 }
