@@ -24,10 +24,17 @@ struct AddPhotoView: View {
     @State private var inputImage: UIImage?
     @State private var image: Image?
     
-    var isUserActionDisabled:Bool { image == nil ? true : false }
+    var isUserActionDisabled:Bool {
+        
+        let imageName = inputImageName.trimmingCharacters(in: .whitespacesAndNewlines)
+        
+        return isEmptyImage || imageName.isEmpty
+    }
+    
+    var isEmptyImage: Bool { image == nil ? true : false }
     
     var textfieldPrompt: String {
-        if isUserActionDisabled {
+        if isEmptyImage {
             return "Choose an image to edit the name."
         }
         
@@ -73,7 +80,7 @@ struct AddPhotoView: View {
                     .font(.headline)
                 TextField(textfieldPrompt, text: $inputImageName)
                     .textFieldStyle(.roundedBorder)
-                    .disabled(isUserActionDisabled)
+                    .disabled(isEmptyImage)
             }
         }
         .padding()
@@ -94,7 +101,7 @@ struct AddPhotoView: View {
                     .background(
                     )
             } else {
-                Text("Tap to choose an image.")
+                Label("Tap to choose an image.", systemImage: "photo")
                     .foregroundColor(.themeBackground)
             }
         }
@@ -110,12 +117,6 @@ struct AddPhotoView: View {
                     source: .photoLibrary,
                     labelText: "Library",
                     systemImageIcon: "photo")
-                //                Spacer()
-                //                chooseImageButtonType(
-                //                    source: .camera,
-                //                    labelText: "Camera",
-                //                    systemImageIcon: "camera")
-                //                Spacer()
             }
         }
     }

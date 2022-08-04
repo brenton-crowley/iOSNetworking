@@ -85,7 +85,7 @@ struct MyBooksView: View {
 struct MyBooksView_Previews: PreviewProvider {
     static var previews: some View {
         
-        let books: [Book]? = nil //Book.books
+        let books: [Book]? = Book.books
         
         MyBooksView(books: books)
             .nestInNavigationView(selectedTab: Tabs.myBooks.rawValue)

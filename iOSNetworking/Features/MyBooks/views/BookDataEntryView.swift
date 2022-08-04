@@ -101,8 +101,16 @@ struct BookDataEntryView: View {
                     // get list of books
                 }
             }
-            
         }
+        .disabled(isRequestDisabled)
+    }
+    
+    var isRequestDisabled: Bool {
+        
+        let titleText = titleText.trimmingCharacters(in: .whitespacesAndNewlines)
+        let authorText = authorText.trimmingCharacters(in: .whitespacesAndNewlines)
+        
+        return titleText.isEmpty || authorText.isEmpty
     }
     
     // MARK: - Data Entry Fields
@@ -134,7 +142,7 @@ struct BookDataEntryView: View {
             labelText: "ISBN: ",
             labelSystemIcon: "number",
             boundText: $isbnText,
-            prompt: "What's the book's isbn?",
+            prompt: "What's the book's isbn? (optional)",
             height: Constants.singleLineTextfieldHeight)
         
     }
@@ -145,7 +153,7 @@ struct BookDataEntryView: View {
             labelText: "Publisher: ",
             labelSystemIcon: "building.columns",
             boundText: $publisherText,
-            prompt: "Who's the book's publisher?",
+            prompt: "Who's the book's publisher? (optional)",
             height: Constants.singleLineTextfieldHeight)
         
     }
@@ -156,7 +164,7 @@ struct BookDataEntryView: View {
             labelText: "Date Published: ",
             labelSystemIcon: "calendar",
             boundText: $publishedAtText,
-            prompt: "When was the book published?",
+            prompt: "When was the book published? (optional)",
             height: Constants.singleLineTextfieldHeight)
         
     }
@@ -167,7 +175,7 @@ struct BookDataEntryView: View {
             labelText: "Description: ",
             labelSystemIcon: "text.alignleft",
             boundText: $descriptionText,
-            prompt: "What's the book about?",
+            prompt: "What's the book about? (optional)",
             height: Constants.multilineTextfieldHeight)
         
     }
