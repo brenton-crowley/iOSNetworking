@@ -23,11 +23,11 @@ extension Photo {
          let photos = [
             
             Photo(uuid: UUID().uuidString, imageName: "orange", imageOriginalFilename: "orange.jpeg", imageFileUrl: "https://learnrest.dev/api/v1/images/202208/7ninRWFxjVpBz9f.jpeg"),
+            Photo(uuid: UUID().uuidString, imageName: "apple", imageOriginalFilename: "apple.jpeg", imageFileUrl: "https://learnrest.dev/api/v1/images/202208/7ninRWFxjVpBz9f.jpeg"),
+            Photo(uuid: UUID().uuidString, imageName: "banana", imageOriginalFilename: "banana.jpeg", imageFileUrl: "https://learnrest.dev/api/v1/images/202208/7ninRWFxjVpBz9f.jpeg"),
+            Photo(uuid: UUID().uuidString, imageName: "watermelon", imageOriginalFilename: "watermelon.jpeg", imageFileUrl: "https://learnrest.dev/api/v1/images/202208/7ninRWFxjVpBz9f.jpeg"),
             Photo(uuid: UUID().uuidString, imageName: "orange", imageOriginalFilename: "orange.jpeg", imageFileUrl: "https://learnrest.dev/api/v1/images/202208/7ninRWFxjVpBz9f.jpeg"),
-            Photo(uuid: UUID().uuidString, imageName: "orange", imageOriginalFilename: "orange.jpeg", imageFileUrl: "https://learnrest.dev/api/v1/images/202208/7ninRWFxjVpBz9f.jpeg"),
-            Photo(uuid: UUID().uuidString, imageName: "orange", imageOriginalFilename: "orange.jpeg", imageFileUrl: "https://learnrest.dev/api/v1/images/202208/7ninRWFxjVpBz9f.jpeg"),
-            Photo(uuid: UUID().uuidString, imageName: "orange", imageOriginalFilename: "orange.jpeg", imageFileUrl: "https://learnrest.dev/api/v1/images/202208/7ninRWFxjVpBz9f.jpeg"),
-            Photo(uuid: UUID().uuidString, imageName: "orange", imageOriginalFilename: "orange.jpeg", imageFileUrl: "https://learnrest.dev/api/v1/images/202208/7ninRWFxjVpBz9f.jpeg")
+            Photo(uuid: UUID().uuidString, imageName: "apple", imageOriginalFilename: "banana.jpeg", imageFileUrl: "https://learnrest.dev/api/v1/images/202208/7ninRWFxjVpBz9f.jpeg")
             
         ]
         return photos
