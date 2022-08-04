@@ -19,6 +19,7 @@ struct MyImagesView: View {
     
     @State private var isAddingPhotoPresented = false
     @State private var isViewingImage = false
+    @State private var selectedPhoto:Photo?
     
     var photos:[Photo]?
     var columns: [GridItem] {
@@ -52,17 +53,19 @@ struct MyImagesView: View {
                 ForEach(photos) { photo in
                     
                     Button {
+                        selectedPhoto = photo
                         isViewingImage = true
                     } label: {
                         Image(photo.imageName)
                             .resizable()
                             .scaledToFit()
                     }
-                    .sheet(isPresented: $isViewingImage) {
-                        FullscreenPhotoView(
-                            isPresented: $isViewingImage,
-                            photo: photo) // Ummmm why is this not displaying the image? It's always showing an orange.
-                    }
+                }
+                .sheet(item: $selectedPhoto) { photo in
+
+                    FullscreenPhotoView(
+                        selectedPhoto: $selectedPhoto,
+                        photo: photo)
                 }
             }
         }

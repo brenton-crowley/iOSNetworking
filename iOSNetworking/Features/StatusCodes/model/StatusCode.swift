@@ -34,7 +34,9 @@ enum StatusCodeFilter: Int, CaseIterable {
     
 }
 
-// MARK: Create the model struct of status and message.
-// Use a static dictionary to store the messages
-// - Status code
-// - Message
+struct StatusCode: Decodable {
+    
+    var status: String?
+    var message: String
+    
+}

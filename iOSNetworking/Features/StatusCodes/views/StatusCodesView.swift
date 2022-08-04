@@ -13,6 +13,8 @@ struct StatusCodesView: View {
         
         // Labels
         static let segmentedInstruction = "Choose a status code grouping."
+        static let pickerInstruction = "Use the picker to select a status code."
+        static let labelOffets:CGFloat = 15.0
         
         // message detail labels
         static let noMessageHeader = "Click below to see if the status code contains a message."
@@ -35,13 +37,16 @@ struct StatusCodesView: View {
     @State private var statusCodeFilter: StatusCodeFilter = .one
     @State private var statusCodePickerNumber: Int = 000
     
-    var message: String? { return "TODO: Replace with requested message" } // TODO: Update this to read a model.
+    var message: String? { return "I'm a teapot" } // TODO: Update this to read a model.
     
     var body: some View {
-        VStack {
+        VStack (spacing: .zero ) {
             Group {
                 Text(Constants.segmentedInstruction)
+                    .offset(y: Constants.labelOffets)
                 statusCodesSegments
+                Text(Constants.pickerInstruction)
+                    .offset(y: Constants.labelOffets)
                 statusCodePicker
             }
             .padding()
@@ -78,8 +83,6 @@ struct StatusCodesView: View {
             let statusCodeRange:ClosedRange<Int> = statusCodeFilter.range
             
             ForEach(statusCodeRange , id: \.self) { statusCode in
-                
-
                 Text(formattedStatusCode(statusCode))
                     .tag(statusCode)
             }

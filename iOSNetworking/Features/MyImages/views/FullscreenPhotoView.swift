@@ -13,7 +13,7 @@ struct FullscreenPhotoView: View {
         
     }
     
-    @Binding var isPresented:Bool
+    @Binding var selectedPhoto:Photo?
     
     @State var showingDeleteAlert = false
     
@@ -56,7 +56,7 @@ struct FullscreenPhotoView: View {
                isPresented: $showingDeleteAlert) {
             Button("Delete", role: .destructive) {
                 // TODO: Delete this image from the server
-                isPresented = false
+                selectedPhoto = nil
             }
         } message: {
             Text("Deleting an image permanently removes it from the database.")
@@ -66,15 +66,18 @@ struct FullscreenPhotoView: View {
     
     var dismissButton: some View {
         Button("Cancel") {
-            isPresented = false
+            selectedPhoto = nil
         }
     }
 }
 
 struct FullscreenPhotoView_Previews: PreviewProvider {
     static var previews: some View {
+        
+        let photo = Photo.examplePhotos!.first!
+        
         FullscreenPhotoView(
-            isPresented: Binding.constant(false),
-            photo: Photo.examplePhotos!.last!)
+            selectedPhoto: Binding.constant(photo),
+            photo: photo)
     }
 }
