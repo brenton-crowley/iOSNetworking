@@ -66,12 +66,15 @@ struct AddPhotoView: View {
     var imageNameTextfield: some View {
         
         VStack (alignment: .leading) {
-            Label("What's the name of this image?", systemImage: "photo")
-                .foregroundColor(.secondary)
-                .font(.headline)
-            TextField(textfieldPrompt, text: $inputImageName)
-                .textFieldStyle(.roundedBorder)
-                .disabled(isUserActionDisabled)
+            
+            if let _ = image {
+                Label("What's the name of this image?", systemImage: "photo")
+                    .foregroundColor(.secondary)
+                    .font(.headline)
+                TextField(textfieldPrompt, text: $inputImageName)
+                    .textFieldStyle(.roundedBorder)
+                    .disabled(isUserActionDisabled)
+            }
         }
         .padding()
         

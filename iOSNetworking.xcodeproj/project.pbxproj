@@ -29,6 +29,7 @@
 		84E43772289B4CCB00C1AB5F /* CarBrandRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E43771289B4CCB00C1AB5F /* CarBrandRow.swift */; };
 		84E43774289B79DF00C1AB5F /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E43773289B79DF00C1AB5F /* ImagePicker.swift */; };
 		84E43776289B7B5D00C1AB5F /* AddPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E43775289B7B5D00C1AB5F /* AddPhotoView.swift */; };
+		84E43778289BA0CD00C1AB5F /* FullscreenPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E43777289BA0CD00C1AB5F /* FullscreenPhotoView.swift */; };
 		84F3AE41289A4CB3004D1359 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F3AE40289A4CB3004D1359 /* Photo.swift */; };
 /* End PBXBuildFile section */
 
@@ -56,6 +57,7 @@
 		84E43771289B4CCB00C1AB5F /* CarBrandRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarBrandRow.swift; sourceTree = "<group>"; };
 		84E43773289B79DF00C1AB5F /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		84E43775289B7B5D00C1AB5F /* AddPhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPhotoView.swift; sourceTree = "<group>"; };
+		84E43777289BA0CD00C1AB5F /* FullscreenPhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullscreenPhotoView.swift; sourceTree = "<group>"; };
 		84F3AE40289A4CB3004D1359 /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -296,6 +298,7 @@
 				84AA886F2898DF6700A8E02B /* MyImagesView.swift */,
 				84E43773289B79DF00C1AB5F /* ImagePicker.swift */,
 				84E43775289B7B5D00C1AB5F /* AddPhotoView.swift */,
+				84E43777289BA0CD00C1AB5F /* FullscreenPhotoView.swift */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -384,6 +387,7 @@
 				84492B482899F23C0000129D /* StatusCode.swift in Sources */,
 				84AA886E2898DF3800A8E02B /* MyBooksView.swift in Sources */,
 				84AA886C2898DCD900A8E02B /* UserProfileButton.swift in Sources */,
+				84E43778289BA0CD00C1AB5F /* FullscreenPhotoView.swift in Sources */,
 				84E43776289B7B5D00C1AB5F /* AddPhotoView.swift in Sources */,
 				84AA884528989AC600A8E02B /* ContentView.swift in Sources */,
 				84AA88682898BFFE00A8E02B /* CarBrandsView.swift in Sources */,

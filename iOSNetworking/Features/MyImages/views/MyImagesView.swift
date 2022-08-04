@@ -18,6 +18,7 @@ struct MyImagesView: View {
     }
     
     @State private var isAddingPhotoPresented = false
+    @State private var isViewingImage = false
     
     var photos:[Photo]?
     var columns: [GridItem] {
@@ -49,9 +50,19 @@ struct MyImagesView: View {
         ScrollView {
             LazyVGrid(columns: columns) {
                 ForEach(photos) { photo in
-                    Image(photo.imageName)
-                        .resizable()
-                        .scaledToFit()
+                    
+                    Button {
+                        isViewingImage = true
+                    } label: {
+                        Image(photo.imageName)
+                            .resizable()
+                            .scaledToFit()
+                    }
+                    .sheet(isPresented: $isViewingImage) {
+                        FullscreenPhotoView(
+                            isPresented: $isViewingImage,
+                            photo: photo) // Ummmm why is this not displaying the image? It's always showing an orange.
+                    }
                 }
             }
         }
