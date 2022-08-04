@@ -15,6 +15,7 @@ struct BookRow: View {
         // placerholderCover
         static let placeholderCornerRadius:CGFloat = 5.0
         static let bookCoverWidth:CGFloat = 80.0
+        static let bgOpacity:CGFloat = 0.5
         
         // Details
         static let detailItemSpacing:CGFloat = 10.0
@@ -26,9 +27,7 @@ struct BookRow: View {
     
     var placeholderColors:[Color] {
         let colors:[Color] = [
-            .themeAccentLight,
-            .themeAccentLighter,
-            .themeAccentLightest,
+            .themeAccentDark,
             .themeSecondary,
             .themeTertiary
         ]
@@ -104,12 +103,16 @@ struct BookRow: View {
             RoundedRectangle(cornerRadius: Constants.placeholderCornerRadius)
                 .fill(coverColor)
                 .frame(width: Constants.bookCoverWidth)
+                .opacity(Constants.bgOpacity)
+                .overlay(
+                    RoundedRectangle(cornerRadius: Constants.placeholderCornerRadius)
+                        .stroke(coverColor)
+                )
             
             Text(getInitialsForName(book.author) ?? "Au")
                 .font(.system(.largeTitle, design: .rounded))
                 .fontWeight(.bold)
-                .blendMode(.multiply)
-                .opacity(0.5)
+                .blendMode(.overlay)
         }
     }
     

@@ -10,6 +10,11 @@ import SwiftUI
 struct CarBrandsView: View {
     
     private struct Constants {
+        
+        // No Results
+        static let noResultsMessage = "No car brands match your query. Type text into the search bar to find a list of brands, rankings, countries or car types."
+        static let noResultsSystemIcon = "doc.text.magnifyingglass"
+        
         static let cornerRadius:CGFloat = 15.0
         static let searchBarBGOpacity:CGFloat = 0.2
         static let searchBarBGHeight:CGFloat = 40
@@ -17,6 +22,7 @@ struct CarBrandsView: View {
         static let searchPrompt = "Enter a search query..."
         static let clearSearchSystemImage = "x.circle.fill"
         static let clearSearchButtonPadding:CGFloat = 9
+        static let clearSearchButtonOpacity:CGFloat = 0.5
         
         static let isSearchingSystemImage = "magnifyingglass"
         
@@ -27,6 +33,8 @@ struct CarBrandsView: View {
     
     @State private var searchText = ""
     @State private var isSearching = true
+    
+    var carBrands:[CarBrand]? = nil
     
     // TODO: Add list for Car Brands once a request is made.
     
@@ -54,8 +62,27 @@ struct CarBrandsView: View {
     }
     
     var carBrandsList: some View {
-        // TODO: Convert to a list and display the car brands
-        Color.themeSecondary
+        
+        Group {
+            if let carBrands = carBrands {
+                // TODO: Display list view of car brands
+                List {
+                    ForEach(carBrands) { brand in
+                        CarBrandRow(carBrand: brand)
+                    }
+                }
+                .listStyle(.plain)
+            } else {
+                noResultsView
+            }
+        }
+    }
+    
+    var noResultsView: some View {
+        OopsView(
+            systemIconImage: Constants.noResultsSystemIcon,
+            messageText: Constants.noResultsMessage
+        )
     }
     
     var searchBar: some View {
@@ -78,6 +105,7 @@ struct CarBrandsView: View {
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .padding(.horizontal)
+                .opacity(Constants.clearSearchButtonOpacity)
                 .foregroundColor(.secondary)
         }
         .opacity(searchText.isEmpty ? 0 : Constants.showOpacity)
@@ -122,7 +150,7 @@ struct CarBrandsView: View {
 struct CarBrandsView_Previews: PreviewProvider {
     static var previews: some View {
         
-        CarBrandsView()
+        CarBrandsView(carBrands: CarBrand.list)
             .nestInNavigationView(selectedTab: Tabs.carBrands.rawValue)
     }
 }

@@ -9,6 +9,12 @@ import SwiftUI
 
 struct MyImagesView: View {
     
+    private struct Constants {
+        // Empty libary
+        static let libraryEmptyMessage = "You don't have any images in your library. Click the plus button + in the top right corner to add an image."
+        static let libraryEmptySystemIcon = "photo.fill"
+    }
+    
     var photos:[Photo]?
     
     var body: some View {
@@ -30,15 +36,9 @@ struct MyImagesView: View {
     }
     
     var noPhotosFeedback: some View {
-        VStack (alignment: .center) {
-            Label("Oops!", systemImage: "photo.fill")
-                .font(.largeTitle)
-                .foregroundColor(.themeAccentLighter)
-            Text("You don't have any **images** in your library. Click the **plus button +** in the top right corner add an image.")
-                .padding(.horizontal, 20.0)
-                .padding(.top, 5.0)
-                .multilineTextAlignment(.center)
-        }
+        OopsView(
+            systemIconImage: Constants.libraryEmptySystemIcon,
+            messageText: Constants.libraryEmptyMessage)
     }
     
     var addImageButton: some View {

@@ -12,11 +12,8 @@ struct MyBooksView: View {
     private struct Constants {
         
         // Empty libary
-        static let libraryEmptyMessage = "You don't have any books in your library. Click the plus button + in the top right corner add a book."
+        static let libraryEmptyMessage = "You don't have any books in your library. Click the plus button + in the top right corner to add a book."
         static let libraryEmptySystemIcon = "books.vertical.fill"
-        static let libraryEmptyLabelText = "Oops!"
-        static let libaryEmptyHorizontalPadding:CGFloat = 20.0
-        static let libaryEmptyVerticalPadding:CGFloat = 5.0
         
         
         // System Icon
@@ -47,16 +44,9 @@ struct MyBooksView: View {
     }
     
     var noBooksFeedback: some View {
-        VStack (alignment: .center) {
-            Label(Constants.libraryEmptyLabelText,
-                  systemImage: Constants.libraryEmptySystemIcon)
-                .font(.largeTitle)
-                .foregroundColor(.themeAccentLighter)
-            Text(Constants.libraryEmptyMessage)
-                .padding(.horizontal, Constants.libaryEmptyHorizontalPadding)
-                .padding(.top, Constants.libaryEmptyVerticalPadding)
-                .multilineTextAlignment(.center)
-        }
+        OopsView(
+            systemIconImage: Constants.libraryEmptySystemIcon,
+            messageText: Constants.libraryEmptyMessage)
     }
     
     @ViewBuilder
@@ -95,7 +85,7 @@ struct MyBooksView: View {
 struct MyBooksView_Previews: PreviewProvider {
     static var previews: some View {
         
-        let books: [Book]? = Book.books
+        let books: [Book]? = nil //Book.books
         
         MyBooksView(books: books)
             .nestInNavigationView(selectedTab: Tabs.myBooks.rawValue)
