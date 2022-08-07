@@ -34,10 +34,13 @@ struct StatusCodesView: View {
     
     // MARK: - View
     
+    @EnvironmentObject private var model:StatusCodeViewModel
+    
     @State private var statusCodeFilter: StatusCodeFilter = .one
     @State private var statusCodePickerNumber: Int = 000
     
-    var message: String? { return "I'm a teapot" } // TODO: Update this to read a model.
+    var statusCode: StatusCode? { model.statusCodes[formattedStatusCode(statusCodePickerNumber)] }
+    var message: String? { statusCode?.message }
     
     var body: some View {
         VStack (spacing: .zero ) {
@@ -50,7 +53,7 @@ struct StatusCodesView: View {
                 statusCodePicker
             }
             .padding()
-            actionBody
+            messageView
         }
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
@@ -101,16 +104,22 @@ struct StatusCodesView: View {
     // If the key doesn't exist, show the button.
     // If the key exists, show the stored message.
     // Potentially add an animation.
-    var actionBody: some View {
+    var messageView: some View {
 
         ZStack (alignment: .top) {
             Color.themeBackground
             Group {
-                if message == nil {
-                    fetchMessageButton
+                
+                if model.isFetching {
+                    ProgressView("Fetching Message...")
                 } else {
-                    messageDetail
+                    if message == nil {
+                        fetchMessageButton
+                    } else {
+                        messageDetail
+                    }
                 }
+                
             }
             .padding()
         }
@@ -154,6 +163,8 @@ struct StatusCodesView: View {
                 .multilineTextAlignment(.center)
             Button {
                     // TODO: Make a request to the API and fetch the status code.
+                let code = formattedStatusCode(statusCodePickerNumber)
+                model.fetchStatusCode(code)
                 } label: {
                     Label(Constants.fetchMessageLabelText,
                           systemImage: Constants.fetchMessageSystemIcon)
@@ -174,5 +185,6 @@ struct StatusCodes_Previews: PreviewProvider {
     static var previews: some View {
         StatusCodesView()
             .nestInNavigationView(selectedTab: Tabs.statusCodes.rawValue)
+            .environmentObject(StatusCodeViewModel())
     }
 }

@@ -10,8 +10,10 @@ import SwiftUI
 @main
 struct iOSNetworkingApp: App {
     var body: some Scene {
+        
         WindowGroup {
             ContentView()
+                .environmentObject(StatusCodeViewModel())
         }
     }
 }
