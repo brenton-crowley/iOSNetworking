@@ -68,7 +68,7 @@ class StatusCodeViewModel: ObservableObject {
         let task = URLSession.shared.dataTask(
             with: urlRequest) { data, response, error in
                 
-                self.isFetching = false
+                DispatchQueue.main.async { self.isFetching = false }
                 
                 guard error == nil else { return }
                 

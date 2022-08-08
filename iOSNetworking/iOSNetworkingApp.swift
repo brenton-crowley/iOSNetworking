@@ -13,7 +13,7 @@ struct iOSNetworkingApp: App {
         
         WindowGroup {
             ContentView()
-                .environmentObject(StatusCodeViewModel())
+                .environmentObject(UserProfileViewModel())
         }
     }
 }

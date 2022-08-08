@@ -21,7 +21,7 @@ struct MyImagesView: View {
     @State private var isViewingImage = false
     @State private var selectedPhoto:Photo?
     
-    var photos:[Photo]?
+    var photos:[Photo]? = Photo.examplePhotos
     var columns: [GridItem] {
         Array(repeating: .init(.flexible(maximum: Constants.maxGridItemSize)), count: 3)
     }

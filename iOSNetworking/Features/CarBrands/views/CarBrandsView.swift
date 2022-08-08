@@ -34,7 +34,7 @@ struct CarBrandsView: View {
     @State private var searchText = ""
     @State private var isSearching = true
     
-    var carBrands:[CarBrand]? = nil
+    var carBrands:[CarBrand]? = CarBrand.list
     
     // TODO: Add list for Car Brands once a request is made.
     

@@ -23,7 +23,7 @@ struct MyBooksView: View {
     @State private var isAddBookPresented = false
     @State private var isUpdateBookPresented = false
     
-    var books: [Book]?
+    var books: [Book]? = Book.books
     
     var body: some View {
         VStack {

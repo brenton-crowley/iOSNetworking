@@ -29,6 +29,10 @@ struct UserProfileView: View {
         
     }
     
+    @EnvironmentObject private var model: UserProfileViewModel
+    
+    var userProfile: UserProfile? { model.profile }
+    
     var body: some View {
         
         VStack(alignment: .center) {
@@ -42,7 +46,14 @@ struct UserProfileView: View {
                 dismissButton
             }
         }
-        .navigationTitle("User Profile") // TODO Change
+        .navigationTitle(userProfile?.fullName ?? "User Profile") // TODO Change
+        .task {
+            do {
+                try await model.fetchUserProfile()
+            } catch {
+                print(error)
+            }
+        }
         
     }
     
@@ -51,11 +62,11 @@ struct UserProfileView: View {
             
             listItemWithTitle(Constants.emailListTitle,
                               systemImage: Constants.emailListSystemImage,
-                              text: "todo@todo.com") // TODO: Make dynamic
+                              text: userProfile?.email ?? "" ) // TODO: Make dynamic
             
             listItemWithTitle(Constants.timezoneListTitle,
                               systemImage: Constants.timezoneSystemImage,
-                              text: "todo")
+                              text: userProfile?.timezone ?? "")
         }
     }
     
@@ -99,5 +110,6 @@ struct UserProfileView_Previews: PreviewProvider {
     static var previews: some View {
         UserProfileView(isPresented: Binding.constant(true))
             .nestInNavigationView(selectedTab: Tabs.userProfile.rawValue)
+            .environmentObject(UserProfileViewModel())
     }
 }
