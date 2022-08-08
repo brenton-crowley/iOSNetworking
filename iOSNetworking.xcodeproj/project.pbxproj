@@ -10,6 +10,10 @@
 		8404AA0528A08ABA005DC17D /* UserProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8404AA0428A08ABA005DC17D /* UserProfileViewModel.swift */; };
 		8404AA0928A08AFC005DC17D /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8404AA0828A08AFC005DC17D /* UserProfile.swift */; };
 		8404AA0B28A08BD9005DC17D /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8404AA0A28A08BD9005DC17D /* APIConstants.swift */; };
+		8404AA0E28A09CAF005DC17D /* CarBrandsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8404AA0D28A09CAF005DC17D /* CarBrandsViewModel.swift */; };
+		8404AA1028A09D5E005DC17D /* Requestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8404AA0F28A09D5E005DC17D /* Requestable.swift */; };
+		8404AA1328A0A241005DC17D /* GetCarBrandsWithQueryRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8404AA1228A0A241005DC17D /* GetCarBrandsWithQueryRequest.swift */; };
+		8404AA1628A0A4AF005DC17D /* APIViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8404AA1528A0A4AF005DC17D /* APIViewModel.swift */; };
 		84492B482899F23C0000129D /* StatusCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84492B472899F23C0000129D /* StatusCode.swift */; };
 		84492B4B289A10A20000129D /* BookRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84492B4A289A10A20000129D /* BookRow.swift */; };
 		84492B4D289A19750000129D /* BookDataEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84492B4C289A19750000129D /* BookDataEntryView.swift */; };
@@ -41,6 +45,10 @@
 		8404AA0428A08ABA005DC17D /* UserProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewModel.swift; sourceTree = "<group>"; };
 		8404AA0828A08AFC005DC17D /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
 		8404AA0A28A08BD9005DC17D /* APIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstants.swift; sourceTree = "<group>"; };
+		8404AA0D28A09CAF005DC17D /* CarBrandsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarBrandsViewModel.swift; sourceTree = "<group>"; };
+		8404AA0F28A09D5E005DC17D /* Requestable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Requestable.swift; sourceTree = "<group>"; };
+		8404AA1228A0A241005DC17D /* GetCarBrandsWithQueryRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCarBrandsWithQueryRequest.swift; sourceTree = "<group>"; };
+		8404AA1528A0A4AF005DC17D /* APIViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIViewModel.swift; sourceTree = "<group>"; };
 		84492B472899F23C0000129D /* StatusCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusCode.swift; sourceTree = "<group>"; };
 		84492B4A289A10A20000129D /* BookRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookRow.swift; sourceTree = "<group>"; };
 		84492B4C289A19750000129D /* BookDataEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDataEntryView.swift; sourceTree = "<group>"; };
@@ -95,6 +103,22 @@
 				8404AA0828A08AFC005DC17D /* UserProfile.swift */,
 			);
 			path = model;
+			sourceTree = "<group>";
+		};
+		8404AA0C28A09C78005DC17D /* viewModel */ = {
+			isa = PBXGroup;
+			children = (
+				8404AA0D28A09CAF005DC17D /* CarBrandsViewModel.swift */,
+			);
+			path = viewModel;
+			sourceTree = "<group>";
+		};
+		8404AA1428A0A497005DC17D /* viewModel */ = {
+			isa = PBXGroup;
+			children = (
+				8404AA1528A0A4AF005DC17D /* APIViewModel.swift */,
+			);
+			path = viewModel;
 			sourceTree = "<group>";
 		};
 		84492B452899F1BD0000129D /* views */ = {
@@ -208,6 +232,7 @@
 		84AA885428989B4400A8E02B /* CarBrands */ = {
 			isa = PBXGroup;
 			children = (
+				8404AA0C28A09C78005DC17D /* viewModel */,
 				84E43770289B4C2300C1AB5F /* views */,
 				84E4376D289B442900C1AB5F /* model */,
 			);
@@ -235,6 +260,7 @@
 		84AA885728989B8B00A8E02B /* api */ = {
 			isa = PBXGroup;
 			children = (
+				8404AA0F28A09D5E005DC17D /* Requestable.swift */,
 				84AA885928989BD100A8E02B /* request */,
 				8404AA0A28A08BD9005DC17D /* APIConstants.swift */,
 			);
@@ -244,6 +270,7 @@
 		84AA885928989BD100A8E02B /* request */ = {
 			isa = PBXGroup;
 			children = (
+				8404AA1228A0A241005DC17D /* GetCarBrandsWithQueryRequest.swift */,
 			);
 			path = request;
 			sourceTree = "<group>";
@@ -306,6 +333,7 @@
 		84E4376A289B41CA00C1AB5F /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				8404AA1428A0A497005DC17D /* viewModel */,
 				84E4376B289B41D700C1AB5F /* OopsView.swift */,
 			);
 			path = Shared;
@@ -418,14 +446,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				84F3AE41289A4CB3004D1359 /* Photo.swift in Sources */,
+				8404AA1028A09D5E005DC17D /* Requestable.swift in Sources */,
 				84AA88642898B4E600A8E02B /* Color+Extensions.swift in Sources */,
 				8404AA0B28A08BD9005DC17D /* APIConstants.swift in Sources */,
 				84AA88702898DF6700A8E02B /* MyImagesView.swift in Sources */,
 				84492B482899F23C0000129D /* StatusCode.swift in Sources */,
 				84B1DF20289C952C003EA883 /* StatusCodeViewModel.swift in Sources */,
 				84AA886E2898DF3800A8E02B /* MyBooksView.swift in Sources */,
+				8404AA0E28A09CAF005DC17D /* CarBrandsViewModel.swift in Sources */,
 				84AA886C2898DCD900A8E02B /* UserProfileButton.swift in Sources */,
 				84E43778289BA0CD00C1AB5F /* FullscreenPhotoView.swift in Sources */,
+				8404AA1328A0A241005DC17D /* GetCarBrandsWithQueryRequest.swift in Sources */,
 				84E43776289B7B5D00C1AB5F /* AddPhotoView.swift in Sources */,
 				84AA884528989AC600A8E02B /* ContentView.swift in Sources */,
 				84AA88682898BFFE00A8E02B /* CarBrandsView.swift in Sources */,
@@ -441,6 +472,7 @@
 				84492B4D289A19750000129D /* BookDataEntryView.swift in Sources */,
 				84E43774289B79DF00C1AB5F /* ImagePicker.swift in Sources */,
 				8404AA0928A08AFC005DC17D /* UserProfile.swift in Sources */,
+				8404AA1628A0A4AF005DC17D /* APIViewModel.swift in Sources */,
 				84E4376F289B443100C1AB5F /* CarBrand.swift in Sources */,
 				84AA88612898A7C500A8E02B /* Tabify.swift in Sources */,
 			);

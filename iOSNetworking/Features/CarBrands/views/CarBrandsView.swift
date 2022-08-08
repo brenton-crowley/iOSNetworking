@@ -14,6 +14,7 @@ struct CarBrandsView: View {
         // No Results
         static let noResultsMessage = "No car brands match your query. Type text into the search bar to find a list of brands, rankings, countries or car types."
         static let noResultsSystemIcon = "doc.text.magnifyingglass"
+        static let infiniteScrollText = "Fetching more brands..."
         
         static let cornerRadius:CGFloat = 15.0
         static let searchBarBGOpacity:CGFloat = 0.2
@@ -31,12 +32,13 @@ struct CarBrandsView: View {
         static let contentOffset:CGFloat = Constants.searchBarOffset - 20.0
     }
     
+    @ObservedObject private var model = CarBrandsViewModel()
+    
     @State private var searchText = ""
     @State private var isSearching = true
     
-    var carBrands:[CarBrand]? = CarBrand.list
-    
-    // TODO: Add list for Car Brands once a request is made.
+    // request that students make a progress loader for this view.
+    var carBrands:[CarBrand]? { model.brands }
     
     var body: some View {
         GeometryReader { geo in
@@ -64,11 +66,16 @@ struct CarBrandsView: View {
     var carBrandsList: some View {
         
         Group {
-            if let carBrands = carBrands {
-                // TODO: Display list view of car brands
+            if let carBrands = carBrands,
+               !carBrands.isEmpty {
                 List {
                     ForEach(carBrands) { brand in
                         CarBrandRow(carBrand: brand)
+                    }
+                    
+                    // Infinite scroll if more brands and not empty.
+                    if !carBrands.isEmpty && model.hasMoreBrands {
+                        infiniteScrollRow
                     }
                 }
                 .listStyle(.plain)
@@ -100,6 +107,7 @@ struct CarBrandsView: View {
         // search bar cancel button
         let clearSearchTextButton = Button {
             searchText = ""
+            
         } label: {
             Image(systemName: Constants.clearSearchSystemImage)
                 .resizable()
@@ -135,6 +143,14 @@ struct CarBrandsView: View {
     var sendSearchQueryButton: some View {
         Button("Send") {
             // TODO: Make API request to retrieve car brands.
+            Task {
+                do {
+                    let query = searchText.trimmingCharacters(in: .whitespacesAndNewlines)
+                    try await model.fetchCarBrandsWithQuery(query)
+                } catch {
+                    print(error)
+                }
+            }
         }
     }
     
@@ -145,12 +161,34 @@ struct CarBrandsView: View {
             Image(systemName: Constants.isSearchingSystemImage)
         }
     }
+    
+    // Work on appear
+    var infiniteScrollRow: some View {
+        HStack {
+            Spacer()
+            ProgressView(Constants.infiniteScrollText)
+                .multilineTextAlignment(.center)
+                .padding()
+                .task {
+                    
+                    do {
+                        let query = searchText.trimmingCharacters(in: .whitespacesAndNewlines)
+                        try await model.fetchMoreBrandsWithQuery(query)
+                    } catch {
+                        print(error)
+                    }
+                    
+                }
+            Spacer()
+        }
+        
+    }
 }
 
 struct CarBrandsView_Previews: PreviewProvider {
     static var previews: some View {
         
-        CarBrandsView(carBrands: CarBrand.list)
+        CarBrandsView()
             .nestInNavigationView(selectedTab: Tabs.carBrands.rawValue)
     }
 }

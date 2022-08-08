@@ -20,6 +20,6 @@ struct APIConstants {
 
 enum APIError: Error {
     
-    case invalidURL, invalidResponseCode
+    case invalidURL, invalidResponseCode, invalidData
     
 }

@@ -92,6 +92,7 @@ struct MyImagesView: View {
             AddPhotoView(isPresented: $isAddingPhotoPresented)
         }
     }
+    
 }
 
 struct MyImagesView_Previews: PreviewProvider {

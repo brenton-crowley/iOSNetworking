@@ -7,6 +7,12 @@
 
 import Foundation
 
+struct CarPage: Decodable {
+    
+    var data: [CarBrand]
+    
+}
+
 struct CarBrand: Identifiable, Decodable {
     
     var uuid, rank, logoLink, origin, name, segment: String
