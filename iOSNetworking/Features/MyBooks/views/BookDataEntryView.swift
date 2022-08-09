@@ -9,7 +9,14 @@ import SwiftUI
 
 struct BookDataEntryView: View {
     
+    enum BookButton: String {
+        case add = "Add", update = "Update"
+    }
+    
     private struct Constants {
+        
+        // Progress Message
+        static let progressMessage = "Updating your book list..."
         
         // View title
         static let addBookTitle = "Add Book"
@@ -28,6 +35,8 @@ struct BookDataEntryView: View {
         
     }
     
+    @EnvironmentObject private var model: MyBooksViewModel
+    
     var book: Book?
     var viewTitle:String {
         return book == nil ? Constants.addBookTitle : Constants.updateBookTitle
@@ -40,39 +49,46 @@ struct BookDataEntryView: View {
     @State private var publishedAtText: String = ""
     @State private var descriptionText: String = ""
     
+    @State private var isUpdating = false // toggles when an api call is made.
+    
     @Binding var isPresented: Bool
     
     var body: some View {
         
-        NavigationView {
-            List {
-                title
-                author
-                isbn
-                publisher
-                publishedAtDate
-                description
-            }
-            .navigationBarTitleDisplayMode(.inline)
-            .navigationTitle(viewTitle)
-            .listStyle(.insetGrouped)
-            .onAppear {
-                if let book = book {
-                    titleText = book.title
-                    authorText = book.author
-                    publisherText = book.publisher ?? ""
-                    isbnText = book.isbn ?? ""
-                    publishedAtText = book.publishedAt ?? ""
+        ZStack {
+            
+            NavigationView {
+                List {
+                    title
+                    author
+                    isbn
+                    publisher
+                    publishedAtDate
+                    description
+                }
+                .navigationBarTitleDisplayMode(.inline)
+                .navigationTitle(viewTitle)
+                .listStyle(.insetGrouped)
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        dismissButton
+                    }
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        sendRequestButton
+                    }
+                }
+                .onAppear {
+                    if let book = book {
+                        titleText = book.title
+                        authorText = book.author
+                        publisherText = book.publisher ?? ""
+                        isbnText = book.isbn ?? ""
+                        publishedAtText = book.publishedAt ?? ""
+                    }
                 }
             }
-            .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    dismissButton
-                }
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    sendRequestButton
-                }
-            }
+            
+            if isUpdating { OverlayProgressView(message: Constants.progressMessage) }
         }
     }
     
@@ -88,21 +104,42 @@ struct BookDataEntryView: View {
     var sendRequestButton: some View {
         
         Group {
-            if book == nil {
-                Button("Add") {
+            
+            let bookDetails = makeBookDetails()
+            let buttonType: BookButton = book == nil ? .add : .update
+            
+            Button(buttonType.rawValue) {
+                
+                Task(priority: .userInitiated ) {
+                    isUpdating = true
+                    do {
+                        
+                        switch buttonType {
+                        case .add:
+                            try await model.saveBook(bookDetails: bookDetails)
+                        case .update:
+                            try await model.updateBook(uuid: book!.uuid, bookDetails: bookDetails)
+                        }
+                        
+                    } catch {
+                        print(error) // Could be an alert.
+                    }
+                    isUpdating = false
                     isPresented = false
-                    // TODO: Send POST request
-                    // get list of books
-                }
-            } else {
-                Button("Update") {
-                    isPresented = false
-                    // TODO: Send PUT request
-                    // get list of books
                 }
             }
         }
         .disabled(isRequestDisabled)
+    }
+    
+    private func makeBookDetails() -> BaseBookRequest.BookDetails {
+        model.makeBookDetails(
+            title: titleText,
+            author: authorText,
+            isbn: !isbnText.isEmpty ? isbnText : nil,
+            publisher: !publisherText.isEmpty ? publisherText : nil,
+            publishedAt: !publishedAtText.isEmpty ? publishedAtText : nil,
+            description: !descriptionText.isEmpty ? descriptionText : nil)
     }
     
     var isRequestDisabled: Bool {
@@ -205,5 +242,6 @@ struct BookDataEntryView_Previews: PreviewProvider {
         BookDataEntryView(
             book: Book.exampleAllDetails!,
             isPresented: Binding.constant(true))
+        .environmentObject(MyBooksViewModel())
     }
 }

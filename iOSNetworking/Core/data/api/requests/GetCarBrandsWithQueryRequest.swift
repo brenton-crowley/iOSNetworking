@@ -11,9 +11,10 @@ import Foundation
 
 struct GetCarBrandsWithQueryRequest: Requestable {
     
-    var path: String = "/car-brands"
+    var path: String = "/car-brands" // endpoint path
     var queryParams: [String : String?] = [:] // if we want to override default implementation, then we must re-declare.
     
+    // add the query parameters in the initialser
     init(_ userQuery: String?, page: Int? = nil) {
         
         self.queryParams["q"] = userQuery

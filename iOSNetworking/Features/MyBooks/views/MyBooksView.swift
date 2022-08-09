@@ -23,7 +23,9 @@ struct MyBooksView: View {
     @State private var isAddBookPresented = false
     @State private var isUpdateBookPresented = false
     
-    var books: [Book]? = Book.books
+    @ObservedObject private var model = MyBooksViewModel()
+    
+    var books: [Book]? { model.books }
     
     var body: some View {
         VStack {
@@ -41,6 +43,22 @@ struct MyBooksView: View {
                 addBookButton
             }
         }
+        .task {
+            print("referesh books")
+            await refreshBooks()
+        }
+        .environmentObject(model)
+
+    }
+    
+    private func refreshBooks() async {
+        
+        do {
+            try await model.fetchBooks()
+        } catch {
+            print(error)
+        }
+        
     }
     
     var noBooksFeedback: some View {
@@ -64,6 +82,23 @@ struct MyBooksView: View {
                         isPresented: $isUpdateBookPresented)
                 }
             }
+            .onDelete(perform: { indexSet in // not essential for demo.
+                
+                Task {
+                    
+                    if let first = indexSet.first {
+                        let book = books[first]
+                        do {
+                            try await model.deleteBook(uuid:book.uuid)
+                        } catch {
+                            print(error)
+                        }
+                    } else {
+                        print("no book to delete.")
+                    }
+                }
+                
+            })
             .listRowSeparator(.hidden)
         }
         .listStyle(.plain)
@@ -85,9 +120,7 @@ struct MyBooksView: View {
 struct MyBooksView_Previews: PreviewProvider {
     static var previews: some View {
         
-        let books: [Book]? = Book.books
-        
-        MyBooksView(books: books)
+        MyBooksView()
             .nestInNavigationView(selectedTab: Tabs.myBooks.rawValue)
     }
 }

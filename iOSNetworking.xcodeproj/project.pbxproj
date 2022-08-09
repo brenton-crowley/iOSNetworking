@@ -18,6 +18,9 @@
 		84492B4B289A10A20000129D /* BookRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84492B4A289A10A20000129D /* BookRow.swift */; };
 		84492B4D289A19750000129D /* BookDataEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84492B4C289A19750000129D /* BookDataEntryView.swift */; };
 		84492B50289A1A300000129D /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84492B4F289A1A300000129D /* Book.swift */; };
+		8461A6A628A1D3B600504106 /* BookRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8461A6A528A1D3B600504106 /* BookRequests.swift */; };
+		8461A6A928A1D98B00504106 /* MyBooksViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8461A6A828A1D98B00504106 /* MyBooksViewModel.swift */; };
+		8461A6AD28A1EF8E00504106 /* OverlayProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8461A6AC28A1EF8E00504106 /* OverlayProgressView.swift */; };
 		84AA884328989AC600A8E02B /* iOSNetworkingApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AA884228989AC600A8E02B /* iOSNetworkingApp.swift */; };
 		84AA884528989AC600A8E02B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AA884428989AC600A8E02B /* ContentView.swift */; };
 		84AA884728989AC800A8E02B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84AA884628989AC800A8E02B /* Assets.xcassets */; };
@@ -53,6 +56,9 @@
 		84492B4A289A10A20000129D /* BookRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookRow.swift; sourceTree = "<group>"; };
 		84492B4C289A19750000129D /* BookDataEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDataEntryView.swift; sourceTree = "<group>"; };
 		84492B4F289A1A300000129D /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
+		8461A6A528A1D3B600504106 /* BookRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookRequests.swift; sourceTree = "<group>"; };
+		8461A6A828A1D98B00504106 /* MyBooksViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBooksViewModel.swift; sourceTree = "<group>"; };
+		8461A6AC28A1EF8E00504106 /* OverlayProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayProgressView.swift; sourceTree = "<group>"; };
 		84AA883F28989AC600A8E02B /* iOSNetworking.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSNetworking.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84AA884228989AC600A8E02B /* iOSNetworkingApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSNetworkingApp.swift; sourceTree = "<group>"; };
 		84AA884428989AC600A8E02B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -155,6 +161,14 @@
 			path = model;
 			sourceTree = "<group>";
 		};
+		8461A6A728A1D97F00504106 /* viewModel */ = {
+			isa = PBXGroup;
+			children = (
+				8461A6A828A1D98B00504106 /* MyBooksViewModel.swift */,
+			);
+			path = viewModel;
+			sourceTree = "<group>";
+		};
 		84AA883628989AC600A8E02B = {
 			isa = PBXGroup;
 			children = (
@@ -214,6 +228,7 @@
 		84AA885228989B3700A8E02B /* MyBooks */ = {
 			isa = PBXGroup;
 			children = (
+				8461A6A728A1D97F00504106 /* viewModel */,
 				84492B4E289A1A280000129D /* model */,
 				84492B49289A10950000129D /* views */,
 			);
@@ -261,18 +276,19 @@
 			isa = PBXGroup;
 			children = (
 				8404AA0F28A09D5E005DC17D /* Requestable.swift */,
-				84AA885928989BD100A8E02B /* request */,
+				84AA885928989BD100A8E02B /* requests */,
 				8404AA0A28A08BD9005DC17D /* APIConstants.swift */,
 			);
 			path = api;
 			sourceTree = "<group>";
 		};
-		84AA885928989BD100A8E02B /* request */ = {
+		84AA885928989BD100A8E02B /* requests */ = {
 			isa = PBXGroup;
 			children = (
 				8404AA1228A0A241005DC17D /* GetCarBrandsWithQueryRequest.swift */,
+				8461A6A528A1D3B600504106 /* BookRequests.swift */,
 			);
-			path = request;
+			path = requests;
 			sourceTree = "<group>";
 		};
 		84AA885A28989BEC00A8E02B /* domain */ = {
@@ -335,6 +351,7 @@
 			children = (
 				8404AA1428A0A497005DC17D /* viewModel */,
 				84E4376B289B41D700C1AB5F /* OopsView.swift */,
+				8461A6AC28A1EF8E00504106 /* OverlayProgressView.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -446,6 +463,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				84F3AE41289A4CB3004D1359 /* Photo.swift in Sources */,
+				8461A6A928A1D98B00504106 /* MyBooksViewModel.swift in Sources */,
 				8404AA1028A09D5E005DC17D /* Requestable.swift in Sources */,
 				84AA88642898B4E600A8E02B /* Color+Extensions.swift in Sources */,
 				8404AA0B28A08BD9005DC17D /* APIConstants.swift in Sources */,
@@ -457,9 +475,11 @@
 				84AA886C2898DCD900A8E02B /* UserProfileButton.swift in Sources */,
 				84E43778289BA0CD00C1AB5F /* FullscreenPhotoView.swift in Sources */,
 				8404AA1328A0A241005DC17D /* GetCarBrandsWithQueryRequest.swift in Sources */,
+				8461A6AD28A1EF8E00504106 /* OverlayProgressView.swift in Sources */,
 				84E43776289B7B5D00C1AB5F /* AddPhotoView.swift in Sources */,
 				84AA884528989AC600A8E02B /* ContentView.swift in Sources */,
 				84AA88682898BFFE00A8E02B /* CarBrandsView.swift in Sources */,
+				8461A6A628A1D3B600504106 /* BookRequests.swift in Sources */,
 				84E4376C289B41D700C1AB5F /* OopsView.swift in Sources */,
 				84AA88662898BD5400A8E02B /* StatusCodesView.swift in Sources */,
 				84492B50289A1A300000129D /* Book.swift in Sources */,

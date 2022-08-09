@@ -53,11 +53,11 @@ struct BookRow: View {
             // Title
             bookField("Title: ",
                       systemIconImage: "text.book.closed",
-                      value: "Project Hail Mary")
+                      value: book.title)
             // Author
             bookField("Author: ",
                       systemIconImage: "person",
-                      value: "Andy Weir")
+                      value: book.author)
             
             
 

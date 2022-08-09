@@ -19,22 +19,21 @@ class CarBrandsViewModel: APIViewModel, ObservableObject {
     @MainActor
     func fetchCarBrandsWithQuery(_ query: String, page: Int = 1) async throws {
         
+        // fetch call
         if let response = try await self.performRequest(
             GetCarBrandsWithQueryRequest(
                 query.lowercased() == "all" ? nil : query,
                 page: page)) {
             
-            print("Page number: \(page)")
-            
+            // pagination
             if let carPage = try self.parseJSONData(response, type: CarPage.self) {
                 
+                // reset the
                 if page == 1 {
                     self.brands = carPage.data
                     self.page = 1
                 } else {
-                    if let _ = self.brands {
-                        self.brands! += carPage.data
-                    }
+                    self.brands?.append(contentsOf: carPage.data)
                 }
                 
                 hasMoreBrands = !carPage.data.isEmpty

@@ -7,6 +7,12 @@
 
 import Foundation
 
+struct BookPage: Decodable {
+    
+    var data: [Book]
+    
+}
+
 struct Book: Identifiable, Decodable {
     
     var title, author, uuid: String
