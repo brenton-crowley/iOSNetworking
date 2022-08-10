@@ -15,13 +15,16 @@ struct MyImagesView: View {
         static let libraryEmptySystemIcon = "photo.fill"
         
         static let maxGridItemSize:CGFloat = 100.0
+        static let placeholderSizeRange = 70...Int(maxGridItemSize)
     }
+    
+    @ObservedObject private var model = MyImagesViewModel()
     
     @State private var isAddingPhotoPresented = false
     @State private var isViewingImage = false
     @State private var selectedPhoto:Photo?
     
-    var photos:[Photo]? = Photo.examplePhotos
+    var photos:[Photo]? { model.photos }
     var columns: [GridItem] {
         Array(repeating: .init(.flexible(maximum: Constants.maxGridItemSize)), count: 3)
     }
@@ -42,6 +45,18 @@ struct MyImagesView: View {
                 addImageButton
             }
         }
+        .environmentObject(model)
+        .task {
+            await refreshPhotos()
+        }
+    }
+    
+    private func refreshPhotos() async {
+        do {
+            try await model.refreshImages()
+        } catch {
+            print(error)
+        }
     }
     
     // MARK: - PhotosView
@@ -56,9 +71,23 @@ struct MyImagesView: View {
                         selectedPhoto = photo
                         isViewingImage = true
                     } label: {
-                        Image(photo.imageName)
-                            .resizable()
-                            .scaledToFit()
+//                        Image(photo.imageName)
+//                            .resizable()
+//                            .scaledToFit()
+//                        Text(photo.filePath)
+                        photoForImageData(photo.imageData)
+                            .task {
+                                // fetch image
+                                if photo.imageData == nil {
+                                    Task {
+                                        do {
+                                            try await model.fetchImageForFilepath(photo.filePath)
+                                        } catch {
+                                            print(error)
+                                        }
+                                    }
+                                }
+                            }
                     }
                 }
                 .sheet(item: $selectedPhoto) { photo in
@@ -70,7 +99,38 @@ struct MyImagesView: View {
             }
         }
     }
+    
+    @ViewBuilder
+    func photoForImageData(_ imageData: Data?) -> some View {
+        
+            ZStack {
+                
+                ProgressView()
+                    .opacity(imageData == nil ? 1 : 0)
+                    .foregroundColor(.secondary)
+                    .frame(width: Constants.maxGridItemSize, height: Constants.maxGridItemSize)
+                
+                if let data = imageData,
+                   let image = UIImage(data: data) {
+                    Image(uiImage: image)
+                        .resizable()
+                        .scaledToFit()
+                        .opacity(imageData == nil ? 0 : 1)
+                }
+            }
+            .animation(.default, value: imageData)
+        
+    }
 
+    private func placeholderSize() -> CGSize {
+        
+        let width = Int(Constants.maxGridItemSize)
+        let height = Int.random(in: Constants.placeholderSizeRange)
+        
+        return CGSize(width: width, height: height)
+        
+    }
+    
     // MARK: - No Photos View
     
     var noPhotosFeedback: some View {
@@ -97,7 +157,8 @@ struct MyImagesView: View {
 
 struct MyImagesView_Previews: PreviewProvider {
     static var previews: some View {
-        MyImagesView(photos: Photo.examplePhotos)
+        MyImagesView()
             .nestInNavigationView(selectedTab: Tabs.myImages.rawValue)
+            .environmentObject(MyImagesViewModel())
     }
 }

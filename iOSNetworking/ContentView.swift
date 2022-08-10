@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @State private var selectedTab = Tabs.myBooks.rawValue
+    @State private var selectedTab = Tabs.myImages.rawValue
     @State private var isUserProfilePresented = false
     
     var body: some View {

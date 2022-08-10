@@ -14,6 +14,8 @@
 		8404AA1028A09D5E005DC17D /* Requestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8404AA0F28A09D5E005DC17D /* Requestable.swift */; };
 		8404AA1328A0A241005DC17D /* GetCarBrandsWithQueryRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8404AA1228A0A241005DC17D /* GetCarBrandsWithQueryRequest.swift */; };
 		8404AA1628A0A4AF005DC17D /* APIViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8404AA1528A0A4AF005DC17D /* APIViewModel.swift */; };
+		8407DABF28A2028D006F5C63 /* MyImagesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8407DABE28A2028D006F5C63 /* MyImagesViewModel.swift */; };
+		8407DAC128A21843006F5C63 /* ImageRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8407DAC028A21843006F5C63 /* ImageRequests.swift */; };
 		84492B482899F23C0000129D /* StatusCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84492B472899F23C0000129D /* StatusCode.swift */; };
 		84492B4B289A10A20000129D /* BookRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84492B4A289A10A20000129D /* BookRow.swift */; };
 		84492B4D289A19750000129D /* BookDataEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84492B4C289A19750000129D /* BookDataEntryView.swift */; };
@@ -52,6 +54,10 @@
 		8404AA0F28A09D5E005DC17D /* Requestable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Requestable.swift; sourceTree = "<group>"; };
 		8404AA1228A0A241005DC17D /* GetCarBrandsWithQueryRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCarBrandsWithQueryRequest.swift; sourceTree = "<group>"; };
 		8404AA1528A0A4AF005DC17D /* APIViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIViewModel.swift; sourceTree = "<group>"; };
+		8407DABE28A2028D006F5C63 /* MyImagesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyImagesViewModel.swift; sourceTree = "<group>"; };
+		8407DAC028A21843006F5C63 /* ImageRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageRequests.swift; sourceTree = "<group>"; };
+		841898BD28A1FBE100A4F774 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		841898BE28A1FC3A00A4F774 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		84492B472899F23C0000129D /* StatusCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusCode.swift; sourceTree = "<group>"; };
 		84492B4A289A10A20000129D /* BookRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookRow.swift; sourceTree = "<group>"; };
 		84492B4C289A19750000129D /* BookDataEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDataEntryView.swift; sourceTree = "<group>"; };
@@ -127,6 +133,14 @@
 			path = viewModel;
 			sourceTree = "<group>";
 		};
+		8407DABD28A2012F006F5C63 /* viewModel */ = {
+			isa = PBXGroup;
+			children = (
+				8407DABE28A2028D006F5C63 /* MyImagesViewModel.swift */,
+			);
+			path = viewModel;
+			sourceTree = "<group>";
+		};
 		84492B452899F1BD0000129D /* views */ = {
 			isa = PBXGroup;
 			children = (
@@ -188,9 +202,11 @@
 		84AA884128989AC600A8E02B /* iOSNetworking */ = {
 			isa = PBXGroup;
 			children = (
+				841898BE28A1FC3A00A4F774 /* Info.plist */,
 				84AA884428989AC600A8E02B /* ContentView.swift */,
 				84AA884228989AC600A8E02B /* iOSNetworkingApp.swift */,
 				84AA884628989AC800A8E02B /* Assets.xcassets */,
+				841898BD28A1FBE100A4F774 /* LaunchScreen.storyboard */,
 				84AA885028989B1F00A8E02B /* Core */,
 				84AA885C2898A33000A8E02B /* Features */,
 				84AA884828989AC800A8E02B /* Preview Content */,
@@ -238,6 +254,7 @@
 		84AA885328989B3D00A8E02B /* MyImages */ = {
 			isa = PBXGroup;
 			children = (
+				8407DABD28A2012F006F5C63 /* viewModel */,
 				84F3AE3F289A4C6E004D1359 /* model */,
 				84F3AE3E289A4C6B004D1359 /* views */,
 			);
@@ -287,6 +304,7 @@
 			children = (
 				8404AA1228A0A241005DC17D /* GetCarBrandsWithQueryRequest.swift */,
 				8461A6A528A1D3B600504106 /* BookRequests.swift */,
+				8407DAC028A21843006F5C63 /* ImageRequests.swift */,
 			);
 			path = requests;
 			sourceTree = "<group>";
@@ -477,6 +495,7 @@
 				8404AA1328A0A241005DC17D /* GetCarBrandsWithQueryRequest.swift in Sources */,
 				8461A6AD28A1EF8E00504106 /* OverlayProgressView.swift in Sources */,
 				84E43776289B7B5D00C1AB5F /* AddPhotoView.swift in Sources */,
+				8407DAC128A21843006F5C63 /* ImageRequests.swift in Sources */,
 				84AA884528989AC600A8E02B /* ContentView.swift in Sources */,
 				84AA88682898BFFE00A8E02B /* CarBrandsView.swift in Sources */,
 				8461A6A628A1D3B600504106 /* BookRequests.swift in Sources */,
@@ -494,6 +513,7 @@
 				8404AA0928A08AFC005DC17D /* UserProfile.swift in Sources */,
 				8404AA1628A0A4AF005DC17D /* APIViewModel.swift in Sources */,
 				84E4376F289B443100C1AB5F /* CarBrand.swift in Sources */,
+				8407DABF28A2028D006F5C63 /* MyImagesViewModel.swift in Sources */,
 				84AA88612898A7C500A8E02B /* Tabify.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -626,10 +646,12 @@
 				DEVELOPMENT_TEAM = BY93XN74UV;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = iOSNetworking/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Your photo library is used to to add photos to your images library.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -656,10 +678,12 @@
 				DEVELOPMENT_TEAM = BY93XN74UV;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = iOSNetworking/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Your photo library is used to to add photos to your images library.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
