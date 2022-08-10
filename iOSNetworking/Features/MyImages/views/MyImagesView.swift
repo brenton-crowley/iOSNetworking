@@ -18,7 +18,7 @@ struct MyImagesView: View {
         static let placeholderSizeRange = 70...Int(maxGridItemSize)
     }
     
-    @ObservedObject private var model = MyImagesViewModel()
+    @EnvironmentObject private var model:MyImagesViewModel
     
     @State private var isAddingPhotoPresented = false
     @State private var isViewingImage = false
@@ -71,22 +71,9 @@ struct MyImagesView: View {
                         selectedPhoto = photo
                         isViewingImage = true
                     } label: {
-//                        Image(photo.imageName)
-//                            .resizable()
-//                            .scaledToFit()
-//                        Text(photo.filePath)
                         photoForImageData(photo.imageData)
                             .task {
-                                // fetch image
-                                if photo.imageData == nil {
-                                    Task {
-                                        do {
-                                            try await model.fetchImageForFilepath(photo.filePath)
-                                        } catch {
-                                            print(error)
-                                        }
-                                    }
-                                }
+                                if photo.imageData == nil { await fetchPhoto(photo) }
                             }
                     }
                 }
@@ -97,6 +84,14 @@ struct MyImagesView: View {
                         photo: photo)
                 }
             }
+        }
+    }
+    
+    private func fetchPhoto(_ photo: Photo) async {
+        do {
+            try await model.fetchImageForFilepath(photo.filePath)
+        } catch {
+            print(error)
         }
     }
     

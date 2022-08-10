@@ -12,10 +12,13 @@ struct AddPhotoView: View {
     private struct Constants {
         
         static let viewTitle = "Add an Image"
+        static let uploadingMessage = "Uploading your image..."
         
         static let imageHeight:CGFloat = 250.0
         static let imageOpacity:CGFloat = 0.5
     }
+    
+    @EnvironmentObject private var model: MyImagesViewModel
     
     @Binding var isPresented: Bool
     
@@ -23,6 +26,7 @@ struct AddPhotoView: View {
     @State private var inputImageName = ""
     @State private var inputImage: UIImage?
     @State private var image: Image?
+    @State private var isUploading = false
     
     var isUserActionDisabled:Bool {
         
@@ -42,31 +46,34 @@ struct AddPhotoView: View {
     }
     
     var body: some View {
-        NavigationView {
-            VStack {
-                photoView
-                    .frame(height: Constants.imageHeight)
-                    .onTapGesture {
-                        showingImagePicker = true
+        ZStack {
+            NavigationView {
+                VStack {
+                    photoView
+                        .frame(height: Constants.imageHeight)
+                        .onTapGesture {
+                            showingImagePicker = true
+                        }
+                    //                chooseImageButtons
+                    imageNameTextfield
+                    Spacer()
+                }
+                .navigationTitle(Constants.viewTitle)
+                .navigationBarTitleDisplayMode(.inline)
+                .onChange(of: inputImage) { _ in loadImage() }
+                .sheet(isPresented: $showingImagePicker) {
+                    ImagePicker(image: $inputImage, imageName: $inputImageName)
+                }
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        dismissButton
                     }
-//                chooseImageButtons
-                imageNameTextfield
-                Spacer()
-            }
-            .navigationTitle(Constants.viewTitle)
-            .navigationBarTitleDisplayMode(.inline)
-            .onChange(of: inputImage) { _ in loadImage() }
-            .sheet(isPresented: $showingImagePicker) {
-                ImagePicker(image: $inputImage, imageName: $inputImageName)
-            }
-            .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    dismissButton
-                }
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    uploadButton
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        uploadButton
+                    }
                 }
             }
+            if isUploading { OverlayProgressView(message: Constants.uploadingMessage)}
         }
     }
     
@@ -146,6 +153,22 @@ struct AddPhotoView: View {
     
         Button("Upload") {
             // TODO: Send request to upload the image
+            
+            if let inputImage = inputImage {
+                Task {
+                    isUploading = true
+                    
+                    do {
+                        try await model.uploadImage(inputImage, fileName: inputImageName)
+                    } catch {
+                        print(error)
+                    }
+                    
+                    isUploading = false
+                    isPresented = false
+                }                
+            }
+            
         }
         .disabled(isUserActionDisabled || inputImageName.isEmpty)
         
@@ -161,5 +184,6 @@ struct AddPhotoView: View {
 struct AddImageView_Previews: PreviewProvider {
     static var previews: some View {
         AddPhotoView(isPresented: Binding.constant(false))
+            .environmentObject(MyImagesViewModel())
     }
 }

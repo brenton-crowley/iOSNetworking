@@ -23,7 +23,7 @@ struct MyBooksView: View {
     @State private var isAddBookPresented = false
     @State private var isUpdateBookPresented = false
     
-    @ObservedObject private var model = MyBooksViewModel()
+    @EnvironmentObject private var model:MyBooksViewModel
     
     var books: [Book]? { model.books }
     
@@ -122,5 +122,6 @@ struct MyBooksView_Previews: PreviewProvider {
         
         MyBooksView()
             .nestInNavigationView(selectedTab: Tabs.myBooks.rawValue)
+            .environmentObject(MyBooksViewModel())
     }
 }

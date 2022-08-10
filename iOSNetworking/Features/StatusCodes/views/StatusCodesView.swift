@@ -34,7 +34,7 @@ struct StatusCodesView: View {
     
     // MARK: - View
     
-    @ObservedObject private var model:StatusCodeViewModel = StatusCodeViewModel()
+    @EnvironmentObject private var model:StatusCodeViewModel
     
     @State private var statusCodeFilter: StatusCodeFilter = .one
     @State private var statusCodePickerNumber: Int = 000
@@ -185,5 +185,6 @@ struct StatusCodes_Previews: PreviewProvider {
     static var previews: some View {
         StatusCodesView()
             .nestInNavigationView(selectedTab: Tabs.statusCodes.rawValue)
+            .environmentObject(StatusCodeViewModel())
     }
 }

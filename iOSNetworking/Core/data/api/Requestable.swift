@@ -30,6 +30,7 @@ protocol Requestable {
     
     // Body Parameters
     var bodyParams: [String: Any] { get }
+    var formData: MultipartFormdata? { get }
     
     // HTTP Method
     var requestMethod: RequestMethod { get }
@@ -37,6 +38,8 @@ protocol Requestable {
 
 // default implementation
 extension Requestable {
+    
+    static var boundaryKey: String { "boundary" }
     
     // url
     var scheme: String { APIConstants.scheme }
@@ -48,6 +51,7 @@ extension Requestable {
     var headers: [String: String] { [:] }
     var queryParams: [String: String?] { [:] }
     var bodyParams: [String: Any] { [:] }
+    var formData: MultipartFormdata? { nil }
     
     // authorization
     var addAuthorizationToken: Bool { true }
@@ -69,10 +73,13 @@ extension Requestable {
         
         // add the auth token
         if addAuthorizationToken {
-            urlRequest.addValue(APIConstants.authToken, forHTTPHeaderField: "Authorization")
+            urlRequest.setValue(APIConstants.authToken, forHTTPHeaderField: "Authorization")
         }
         
         // skip the body params.
+        if let form = formData {
+            urlRequest.httpBody = form.httpBody
+        }
         
         return urlRequest
     }
@@ -91,4 +98,6 @@ extension Requestable {
         
         return components
     }
+    
+    
 }

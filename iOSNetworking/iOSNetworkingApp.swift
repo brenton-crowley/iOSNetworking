@@ -14,6 +14,10 @@ struct iOSNetworkingApp: App {
         WindowGroup {
             ContentView()
                 .environmentObject(UserProfileViewModel())
+                .environmentObject(MyImagesViewModel())
+                .environmentObject(MyBooksViewModel())
+                .environmentObject(CarBrandsViewModel())
+                .environmentObject(StatusCodeViewModel())
         }
     }
 }

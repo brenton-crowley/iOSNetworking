@@ -12,6 +12,8 @@ class ImageRequest: Requestable {
     var path: String = "/images"
     var queryParams: [String : String?] = [:]
     var requestMethod: RequestMethod = .GET
+    var formData: MultipartFormdata? = nil
+    var headers: [String : String] = [:]
     
     fileprivate init() { }
 }
@@ -43,6 +45,19 @@ class DeleteImageRequest: ImageRequest {
         self.path += "/\(uuid)" // path parameter
         
         self.requestMethod = .DELETE
+    }
+    
+}
+
+class UploadImageRequest: ImageRequest {
+    
+    init(formData: MultipartFormdata) {
+        super.init()
+        self.formData = formData
+        self.requestMethod = .POST
+        
+        if let headerValue = self.formData?.headerValue { self.headers["Content-Type"] = headerValue }
+        
     }
     
 }

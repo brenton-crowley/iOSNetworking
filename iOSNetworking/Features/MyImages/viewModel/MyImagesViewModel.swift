@@ -14,6 +14,30 @@ class MyImagesViewModel: APIViewModel, ObservableObject {
     
     // add an image
     // TODO: Can't do this until the upload works.
+    func uploadImage(_ image: UIImage, fileName: String) async throws {
+        
+        let image = image.aspectFittedToHeight(500.0)
+        
+        if let imageData = image.jpegData(compressionQuality: 0) {
+            
+            let fields = [
+                MultipartFormdata.FieldType.file(
+                    fieldName: "image", // docs name
+                    value: imageData,
+                    fileName: "\(fileName).jpeg",
+                    mimeType: "image/jpeg"),
+                MultipartFormdata.FieldType.text(
+                    fieldName: "image_name", // docs name
+                    value: fileName)
+            ]
+            
+            let request =  UploadImageRequest(formData: MultipartFormdata(fields: fields))
+            
+            let _ = try await self.performRequest(request)
+            
+            try await self.refreshImages()
+        }
+    }
     
     // delete an image
     
@@ -35,7 +59,15 @@ class MyImagesViewModel: APIViewModel, ObservableObject {
            let photoPage = try self.parseJSONData(response, type: PhotoPage.self) {
 
             if let existingPhotos = self.photos {
-                self.photos = Array(Set(existingPhotos + photoPage.data))
+                
+                for newPhoto in photoPage.data {
+                    
+                    if !(existingPhotos.contains(where: { $0.imageUuid == newPhoto.imageUuid })) {
+                        self.photos?.append(newPhoto)
+                    }
+                    
+                }
+                
             } else {
                 self.photos = photoPage.data
             }
@@ -58,4 +90,17 @@ class MyImagesViewModel: APIViewModel, ObservableObject {
         
     }
     
+}
+
+extension UIImage {
+    func aspectFittedToHeight(_ newHeight: CGFloat) -> UIImage {
+        let scale = newHeight / self.size.height
+        let newWidth = self.size.width * scale
+        let newSize = CGSize(width: newWidth, height: newHeight)
+        let renderer = UIGraphicsImageRenderer(size: newSize)
+
+        return renderer.image { _ in
+            self.draw(in: CGRect(origin: .zero, size: newSize))
+        }
+    }
 }

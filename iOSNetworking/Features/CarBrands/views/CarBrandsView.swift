@@ -32,7 +32,7 @@ struct CarBrandsView: View {
         static let contentOffset:CGFloat = Constants.searchBarOffset - 20.0
     }
     
-    @ObservedObject private var model = CarBrandsViewModel()
+    @EnvironmentObject private var model: CarBrandsViewModel
     
     @State private var searchText = ""
     @State private var isSearching = true
@@ -190,5 +190,6 @@ struct CarBrandsView_Previews: PreviewProvider {
         
         CarBrandsView()
             .nestInNavigationView(selectedTab: Tabs.carBrands.rawValue)
+            .environmentObject(CarBrandsViewModel())
     }
 }
