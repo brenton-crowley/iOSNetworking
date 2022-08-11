@@ -54,7 +54,7 @@ class StatusCodeViewModel: ObservableObject {
         // add the auth token
         // add the body parameters
         urlRequest.allHTTPHeaderFields = [:]
-        let token = "Bearer 4|tBEodH7QmM2g5lLWDTots0ZqYS1Mzkz0KMeOJoSx"
+        let token = "Bearer 6|Qzveq6vI9p0Bev7y2ygDL497Fkth9i1QddTnSyH7"
         urlRequest.addValue(token, forHTTPHeaderField: "Authorization") // Can't add header like this as it's reserved. Refer to docs.
             
         /// 3. Use URLSession.share to initiate a dataTask.

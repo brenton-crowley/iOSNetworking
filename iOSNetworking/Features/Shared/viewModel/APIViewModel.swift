@@ -19,19 +19,15 @@ class APIViewModel {
         
         let urlRequest = try request.makeURLRequest()
         
-        var data:Data?
+        var (data, _): (Data, URLResponse)
         
-        switch request.requestMethod {
+        if let _ = request.formData,
+           let uploadData = urlRequest.httpBody {
             
-        case .POST:
-            if let uploadData = urlRequest.httpBody {
-                
-                let (response, _) = try await self.urlSession.upload(for: urlRequest, from: uploadData)
-                data = response
-            }
-        default:
-            let (response, _) = try await self.urlSession.data(for: urlRequest)
-            data = response
+            (data, _) = try await self.urlSession.upload(for: urlRequest, from: uploadData)
+            
+        } else {
+            (data, _) = try await self.urlSession.data(for: urlRequest)
         }
         
         // could put in a check against the status code here.

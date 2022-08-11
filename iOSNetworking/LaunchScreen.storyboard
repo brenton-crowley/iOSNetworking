@@ -23,24 +23,16 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LaunchScreens" translatesAutoresizingMaskIntoConstraints="NO" id="ZYw-Kn-eyR">
-                                <rect key="frame" x="0.0" y="0.0" width="419" height="912"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="LaunchScreens" translatesAutoresizingMaskIntoConstraints="NO" id="ZYw-Kn-eyR">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="419" id="GWF-bw-Enq"/>
-                                    <constraint firstAttribute="width" secondItem="ZYw-Kn-eyR" secondAttribute="height" multiplier="419:912" id="XnS-nM-Uuf"/>
-                                    <constraint firstAttribute="height" constant="912" id="gIQ-fH-w4v"/>
+                                    <constraint firstAttribute="width" secondItem="ZYw-Kn-eyR" secondAttribute="height" multiplier="207:448" id="iZ6-Jk-wGN"/>
                                 </constraints>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Bcu-3y-fUS"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="tintColor" name="AccentColor"/>
-                        <constraints>
-                            <constraint firstItem="ZYw-Kn-eyR" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="BzX-kg-NJl"/>
-                            <constraint firstItem="ZYw-Kn-eyR" firstAttribute="leading" secondItem="Bcu-3y-fUS" secondAttribute="leading" id="JIi-xf-zxq"/>
-                            <constraint firstAttribute="bottom" secondItem="ZYw-Kn-eyR" secondAttribute="bottom" id="hr8-m4-sB3"/>
-                            <constraint firstAttribute="trailing" secondItem="ZYw-Kn-eyR" secondAttribute="trailing" id="rMp-ik-wSm"/>
-                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
