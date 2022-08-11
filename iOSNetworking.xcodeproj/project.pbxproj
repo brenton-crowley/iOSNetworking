@@ -60,7 +60,6 @@
 		8404AA1528A0A4AF005DC17D /* APIViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIViewModel.swift; sourceTree = "<group>"; };
 		8407DABE28A2028D006F5C63 /* MyImagesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyImagesViewModel.swift; sourceTree = "<group>"; };
 		8407DAC028A21843006F5C63 /* ImageRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageRequests.swift; sourceTree = "<group>"; };
-		841898BE28A1FC3A00A4F774 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		84492B472899F23C0000129D /* StatusCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusCode.swift; sourceTree = "<group>"; };
 		84492B4A289A10A20000129D /* BookRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookRow.swift; sourceTree = "<group>"; };
 		84492B4C289A19750000129D /* BookDataEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDataEntryView.swift; sourceTree = "<group>"; };
@@ -209,7 +208,6 @@
 		84AA884128989AC600A8E02B /* iOSNetworking */ = {
 			isa = PBXGroup;
 			children = (
-				841898BE28A1FC3A00A4F774 /* Info.plist */,
 				84AA884428989AC600A8E02B /* ContentView.swift */,
 				84AA884228989AC600A8E02B /* iOSNetworkingApp.swift */,
 				84AA884628989AC800A8E02B /* Assets.xcassets */,
