@@ -20,8 +20,14 @@ User the segmented control and the picker to fetch a status code and see if it h
 - Demonstrates the entry point to make calls to API endpoints, but it isn't best practice.
 - Demonstrates pagination through infinite scrolling.
 
+## UserProfile Toolbar Item on all TabViews
+Displays basic user information.
+- Demonstrates async/await version of URLSesstion.data( ... ) in an isolated context.
+- Not yet modularised.
+
 ## Car Brands Tab
 Search the API for a list of car brands using a search field. Displays the result in a list.
+- Modularises API requests using Requestable and APIViewModel.
 - Encapsulates the request into a base class called APIViewModel.
 - Abstracts the request to conform to a Requestable protocol.
 - Prepares a base request with hidden boiler plate code.
