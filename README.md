@@ -1,7 +1,9 @@
 # iOSNetworking
-Sample app that demonstrates API connectivity using URLSession and protocol oriented programming. Connects to the Learnrest.dev API. 
+Sample app that demonstrates API connectivity using URLSession and protocol oriented programming.
 
 The sample app connects to https://learnrest.dev.
+
+The user interface is not intended to be perfect. For example, a user cannot zoom in on a selected image in the My Images tab. The purpose of the app is to demonstrate how to connect to a third-party API in iOS using URLSession.
 
 The API uses a bearer token and this token is embedded in the project. Once (hardcoded) in StatusCodesViewModel and another in APIConstants.
 
