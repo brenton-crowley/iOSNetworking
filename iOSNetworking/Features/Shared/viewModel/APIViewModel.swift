@@ -15,22 +15,24 @@ class APIViewModel {
         self.urlSession = urlSession
     }
     
-    func performRequest(_ request: Requestable) async throws -> Data? {
+    func performRequest(_ request: Requestable, expectedResponseCode: Int = 200, printResponse: Bool  = false) async throws -> Data? {
         
         let urlRequest = try request.makeURLRequest()
         
-        var (data, _): (Data, URLResponse)
+        var (data, response): (Data, URLResponse)
         
         if let _ = request.formData,
            let uploadData = urlRequest.httpBody {
             
-            (data, _) = try await self.urlSession.upload(for: urlRequest, from: uploadData)
+            (data, response) = try await self.urlSession.upload(for: urlRequest, from: uploadData)
             
         } else {
-            (data, _) = try await self.urlSession.data(for: urlRequest)
+            (data, response) = try await self.urlSession.data(for: urlRequest)
         }
         
-        // could put in a check against the status code here.
+        // Check that the status code is the expected response.
+        let code = (response as? HTTPURLResponse)?.statusCode
+        guard code == expectedResponseCode else { throw APIError.invalidResponseCode(expected: expectedResponseCode, received: code ?? -1) }
         
         return data
     }

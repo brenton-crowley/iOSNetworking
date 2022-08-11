@@ -22,7 +22,9 @@ class UserProfileViewModel: ObservableObject {
         
         let (data, response) = try await URLSession.shared.data(for: urlRequest)
         
-        guard (response as? HTTPURLResponse)?.statusCode == 200 else { throw APIError.invalidResponseCode }
+        let code = (response as? HTTPURLResponse)?.statusCode
+        
+        guard code == 200 else { throw APIError.invalidResponseCode(expected: 200, received: code ?? -1) }
         
         self.profile = try parseData(data)
         
