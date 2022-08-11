@@ -18,6 +18,7 @@ https://user-images.githubusercontent.com/1415689/184044740-970564bb-f250-4dba-8
 User the segmented control and the picker to fetch a status code and see if it has an associated message.
 - Demonstrates how to use URLSession.dataTask{ ... }.resume()
 - Demonstrates the entry point to make calls to API endpoints, but it isn't best practice.
+- Demonstrates pagination through infinite scrolling.
 
 ## Car Brands Tab
 Search the API for a list of car brands using a search field. Displays the result in a list.
