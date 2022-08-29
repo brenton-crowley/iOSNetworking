@@ -15,7 +15,7 @@ struct APIConstants {
     static let version: String = "/api/v1"
     
     // Headers
-    static let authToken = "Bearer 6|Qzveq6vI9p0Bev7y2ygDL497Fkth9i1QddTnSyH7"
+    static let authToken = "Bearer 8|yfCrZddj5kWV06l0JsNdBHpnO79pIUW059vnSYzI"
 }
 
 enum APIError: Error {

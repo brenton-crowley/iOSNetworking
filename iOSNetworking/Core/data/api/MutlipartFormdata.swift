@@ -9,8 +9,29 @@ import Foundation
 
 struct MultipartFormdata {
     
+    /// https://www.donnywals.com/uploading-images-and-forms-to-a-server-using-urlsession/
+    ///
+    /// The HEADER key value pairing.
+    /// Content-Type: multipart/form-data; boundary=--------------------------608687404936096009157798
+    ///
+    /// ----------------------------608687404936096009157798
+    /// Content-Disposition: form-data; name="image"; filename="banana.jpeg"
+    /// Content-Type: image/jpeg
+    ///
+    /// DATA...
+    /// ----------------------------608687404936096009157798
+    /// Content-Disposition: form-data; name="image_name"
+    ///
+    /// postman_banana
+    /// ----------------------------608687404936096009157798-- // boundaryend
+    ///
+    ///
+    ///
+    ///
+    
     enum FieldType {
-        case text(fieldName: String, value: String), file(fieldName: String, value: Data, fileName: String, mimeType:String)
+        case text(fieldName: String, value: String)
+        case file(fieldName: String, value: Data, fileName: String, mimeType:String)
     }
     
     // Key/Value pair of form field. Key = fieldName, Value = fieldVale as String, Data or anything else
@@ -18,11 +39,15 @@ struct MultipartFormdata {
     let boundaryId = UUID()
     
     var lineBreak: String { "\r\n" }
-    var boundary: String { "--\(boundaryId)\(lineBreak)" }
-    var headerValue: String { "multipart/form-data; boundary=\(boundaryId.uuidString)" }
-    var endBoundary: String { "--\(boundaryId)--" }
+    var boundary: String { "--\(boundaryId)" }
+    var endBoundary: String { "--------------------------\(boundaryId)--" }
     
-    var httpBody: Data = Data()
+    var header: (key: String, value: String) {
+        (key: "Content-Type",
+         value: "multipart/form-data; boundary=\(boundaryId.uuidString)")
+    }
+    
+    var httpBody = Data()
     
     init(fields: [FieldType] = []) {
         self.fields = fields
@@ -33,7 +58,7 @@ struct MultipartFormdata {
         
         // loop through each of the fields
         
-        let httpBody = NSMutableData()
+        var httpBody = Data()
         
         for field in self.fields {
             
@@ -53,7 +78,12 @@ struct MultipartFormdata {
     
     private func dataForTextfield(fieldName: String, value: String) -> Data {
         
-        var fieldString = boundary
+        /// ----------------------------608687404936096009157798
+        /// Content-Disposition: form-data; name="image_name"
+        ///
+        /// postman_banana
+        
+        var fieldString = "\(boundary)\(lineBreak)"
         
         fieldString.append("Content-Disposition: form-data; name=\"\(fieldName)\"\(lineBreak + lineBreak)")
         fieldString.append("\(value + lineBreak)")
@@ -65,9 +95,15 @@ struct MultipartFormdata {
     
     private func dataForFile(fieldName: String, imageData: Data, fileName: String, mimeType: String) -> Data {
         
-        let data = NSMutableData()
+        /// ----------------------------608687404936096009157798
+        /// Content-Disposition: form-data; name="image"; filename="banana.jpeg"
+        /// Content-Type: image/jpeg
+        ///
+        /// DATA...
         
-        data.appendString(boundary)
+        var data = Data()
+        
+        data.appendString("\(boundary)\(lineBreak)")
         data.appendString("Content-Disposition: form-data; name=\"\(fieldName)\"; filename=\"\(fileName)\"\(lineBreak)")
         data.appendString("Content-Type: \(mimeType + lineBreak + lineBreak)")
         data.append(imageData)

@@ -7,6 +7,8 @@
 
 import Foundation
 
+// If a conforming type provides its own implementation of a required method or property, that implementation will be used instead of the one provided by the extension
+
 class ImageRequest: Requestable {
     
     var path: String = "/images"
@@ -56,7 +58,7 @@ class UploadImageRequest: ImageRequest {
         self.formData = formData
         self.requestMethod = .POST
         
-        if let headerValue = self.formData?.headerValue { self.headers["Content-Type"] = headerValue }
+        if let header = self.formData?.header { self.headers[header.key] = header.value }
         
     }
     
